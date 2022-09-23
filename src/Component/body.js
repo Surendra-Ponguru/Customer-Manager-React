@@ -340,14 +340,10 @@ export default class Body extends Component {
   render() {
     console.log("state", this.state);
     return (
-       
       <div>
-
         <div>
-           
           <Customer />
           <div>
-            
               <CustomerList
                 search={this.search}
                 updateViewType={(type) => this.setState({ viewType: type })}
