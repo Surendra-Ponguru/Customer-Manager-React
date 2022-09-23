@@ -12,8 +12,7 @@ import CustomerDetails from "./CustomerDetail";
 import AboutPage from "./About";
 // import CustomerDetail from "./CustomerDetail";
 // import axios from "axios";
-import Login from './Login';
-
+import Login from "./Login";
 
 export default class Body extends Component {
   constructor(props) {
@@ -22,7 +21,7 @@ export default class Body extends Component {
       sampleLogo: logos,
       samplePic: logoss,
       prDetails: [],
-      filterdata:[],
+      filterdata: [],
       listdetails: [],
       viewType: "gridView",
       openPage: "openPage",
@@ -48,96 +47,106 @@ export default class Body extends Component {
     // this.setState({listdetails:profileDetails});
   }
 
-
-    /////******Add Customers *******/
+  /////******Add Customers *******/
   addCustomer = () => {
     return (
       <div>
         <div className="addCust1">
-        <div className="inAddCust1">
-                <img src={logosss} name="name" className="addimg"></img>
-                <h1 style={{marginLeft:"-85px",marginTop:"20px",fontSize:"50px"}}>Customers Manager</h1>
-        </div>
-        <div>
-          <form  >
-            <table>
+          <div className="inAddCust1">
+            <img src={logosss} name="name" className="addimg"></img>
+            <h1
+              style={{
+                marginLeft: "-85px",
+                marginTop: "20px",
+                fontSize: "50px",
+              }}
+            >
+              Customers Manager
+            </h1>
+          </div>
+          <div>
+            <form>
+              <table>
                 <tr>
                   <td>
                     <label className="addLabel"> Enter firstName :</label>
                   </td>
                   <td>
                     {" "}
-                    <input type="text"  className="addInput"></input>
+                    <input type="text" className="addInput"></input>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <label  className="addLabel"> Enter lasstName :</label>
+                    <label className="addLabel"> Enter lasstName :</label>
                   </td>
                   <td>
-                    <input type="text"  className="addInput"></input>{" "}
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label  className="addLabel"> Enter gender :</label>
-                  </td>
-                  <td>
-                    <input type="text"  className="addInput"></input>
+                    <input type="text" className="addInput"></input>{" "}
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <label  className="addLabel"> Enter address :</label>
+                    <label className="addLabel"> Enter gender :</label>
+                  </td>
+                  <td>
+                    <input type="text" className="addInput"></input>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label className="addLabel"> Enter address :</label>
                   </td>
                   <td>
                     {" "}
-                    <input type="text"  className="addInput"></input>
+                    <input type="text" className="addInput"></input>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <label  className="addLabel"> Enter city:</label>
+                    <label className="addLabel"> Enter city:</label>
                   </td>
                   <td>
                     {" "}
-                    <input type="text"  className="addInput"></input>
+                    <input type="text" className="addInput"></input>
                   </td>
                 </tr>
                 <tr>
                   <td>
                     {" "}
-                    <label  className="addLabel"> Enter state :</label>
+                    <label className="addLabel"> Enter state :</label>
                   </td>
                   <td>
                     {" "}
-                    <input type="text"  className="addInput"></input>
+                    <input type="text" className="addInput"></input>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <label  className="addLabel"> state abbrevation:</label>
+                    <label className="addLabel"> state abbrevation:</label>
                   </td>
                   <td>
                     {" "}
-                    <input type="text"  className="addInput"></input>
+                    <input type="text" className="addInput"></input>
                   </td>
                 </tr>
-              <div className="inAddCust2">
-                <input   class="btn btn-outline-success" type="Submit"></input>
-                <input   class="btn btn-outline-danger"  style={{maginLeft:"30px"}} type="Reset" name="Cancel"></input>
-              </div>
-            </table>
-          </form>
+                <div className="inAddCust2">
+                  <input class="btn btn-outline-success" type="Submit"></input>
+                  <input
+                    class="btn btn-outline-danger"
+                    style={{ maginLeft: "30px" }}
+                    type="Reset"
+                    name="Cancel"
+                  ></input>
+                </div>
+              </table>
+            </form>
           </div>
         </div>
       </div>
     );
   };
 
-
-
-   ///*********Card View********** 
+  ///*********Card View**********
   listCustomerData = () => {
     this.totalOrder();
     return this.state.prDetails
@@ -225,71 +234,75 @@ export default class Body extends Component {
           </thead>
           <tbody>
             {console.log(this.state.prDetails)}
-            {this.state.prDetails.map((profile, index) => {
-              return (
-                <tr key={index + 1}>
-                  <td className="list1">
-                    {" "}
-                    {profile.gender === "male" ? (
-                      <img
-                        className="bodyImg"
-                        src={logos}
+            {this.state.prDetails
+              .slice(this.state.pageNo * 10, (this.state.pageNo + 1) * 4)
+              .map((profile, index) => {
+                return (
+                  <tr key={index + 1}>
+                    <td className="list1">
+                      {" "}
+                      {profile.gender === "male" ? (
+                        <img
+                          className="bodyImg"
+                          src={logos}
+                          style={{
+                            width: "75px",
+                            height: "70px",
+                            marginLeft: "10px",
+                          }}
+                          alt="name"
+                        ></img>
+                      ) : (
+                        <img
+                          className="bodyImg"
+                          src={logoss}
+                          style={{
+                            width: "90px",
+                            height: "75px",
+                            marginLeft: "10px",
+                            background: "transparent;",
+                          }}
+                          alt="names"
+                        ></img>
+                      )}
+                    </td>
+                    <td className="list1">
+                      <button
                         style={{
-                          width: "75px",
-                          height: "70px",
-                          marginLeft: "10px",
+                          border: "none",
+                          width: "100px",
+                          background: "transparent",
+                          color: "rgb(75, 120, 235)",
                         }}
-                        alt="name"
-                      ></img>
-                    ) : (
-                      <img
-                        className="bodyImg"
-                        src={logoss}
+                      >
+                        {profile.firstName}
+                      </button>
+                    </td>
+                    <td className="list1">{profile.lastName}</td>
+                    <td className="list1" style={{ width: "150px" }}>
+                      {profile.address}
+                    </td>
+                    <td className="list1">{profile.city}</td>
+                    <td className="list1">{profile.state.name}</td>
+                    <td className="list1">
+                      $ {this.totalOrder(profile.orders)}
+                    </td>
+                    <td className="list1">
+                      <button
                         style={{
-                          width: "90px",
-                          height: "75px",
-                          marginLeft: "10px",
-                          background: "transparent;",
+                          border: "none",
+                          width: "100px",
+                          background: "transparent",
+                          color: "rgb(75, 120, 235)",
                         }}
-                        alt="names"
-                      ></img>
-                    )}
-                  </td>
-                  <td className="list1">
-                    <button
-                      style={{
-                        border: "none",
-                        width: "100px",
-                        background: "transparent",
-                        color: "rgb(75, 120, 235)",
-                      }}
-                    >
-                      {profile.firstName}
-                    </button>
-                  </td>
-                  <td className="list1">{profile.lastName}</td>
-                  <td className="list1" style={{ width: "150px" }}>
-                    {profile.address}
-                  </td>
-                  <td className="list1">{profile.city}</td>
-                  <td className="list1">{profile.state.name}</td>
-                  <td className="list1">$ {this.totalOrder(profile.orders)}</td>
-                  <td className="list1">
-                    <button
-                      style={{
-                        border: "none",
-                        width: "100px",
-                        background: "transparent",
-                        color: "rgb(75, 120, 235)",
-                      }}
-                      onClick={(e) => this.state.customerData("Details")}
-                    >
-                      View Orders
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
+                        onClick={(e) => this.state.customerData("Details")}
+                      >
+                        View Orders
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
       </div>
@@ -319,21 +332,22 @@ export default class Body extends Component {
   //     }
   //   })
   // }
-  
+
   search = (searchKey) => {
     let filterdata;
-    console.log("sss",searchKey)
-    if (searchKey!=''){
-     filterdata= this.state.prDetails.filter((prDetails) =>
-      prDetails.firstName.toLowerCase().includes(searchKey) ||
-      prDetails.lastName.toLowerCase().includes(searchKey) ||
-      prDetails.gender.toLowerCase().includes(searchKey) ||
-      prDetails.city.toLowerCase().includes(searchKey) ||
-      prDetails.state.name.toLowerCase().includes(searchKey) 
-    );
-    this.setState({prDetails:filterdata})}
-    else{
-      this.setState({prDetails:this.state.filterdata})
+    console.log("sss", searchKey);
+    if (searchKey != "") {
+      filterdata = this.state.prDetails.filter(
+        (prDetails) =>
+          prDetails.firstName.toLowerCase().includes(searchKey) ||
+          prDetails.lastName.toLowerCase().includes(searchKey) ||
+          prDetails.gender.toLowerCase().includes(searchKey) ||
+          prDetails.city.toLowerCase().includes(searchKey) ||
+          prDetails.state.name.toLowerCase().includes(searchKey)
+      );
+      this.setState({ prDetails: filterdata });
+    } else {
+      this.setState({ prDetails: this.state.filterdata });
     }
   };
 
@@ -344,34 +358,33 @@ export default class Body extends Component {
         <div>
           <Customer />
           <div>
-              <CustomerList
-                search={this.search}
-                updateViewType={(type) => this.setState({ viewType: type })}
-              />
-          <div className="bodyDiv">
-            <div className="insideBodyDiv">
-              {console.log("CHeck view Type :", this.state.viewType)} 
-              {this.state.viewType === "mapView" && <MapView />}
-              {this.state.viewType === "listView" && this.listView()}
-              {this.state.viewType === "gridView" && this.listCustomerData()}
-              {this.state.viewType === "newCustomerView" && this.addCustomer()}
-            
-              
-              {/* {this.state.viewType ==="About" &&<AboutPage/>} */}
+            <CustomerList
+              search={this.search}
+              updateViewType={(type) => this.setState({ viewType: type })}
+            />
+            <div className="bodyDiv">
+              <div className="insideBodyDiv">
+                {console.log("CHeck view Type :", this.state.viewType)}
+                {this.state.viewType === "mapView" && <MapView />}
+                {this.state.viewType === "listView" && this.listView()}
+                {this.state.viewType === "gridView" && this.listCustomerData()}
+                {this.state.viewType === "newCustomerView" &&
+                  this.addCustomer()}
+
+                {/* {this.state.viewType ==="About" &&<AboutPage/>} */}
+              </div>
             </div>
+            {this.state.viewType !== "mapView" &&
+              this.state.viewType !== "newCustomerView" && (
+                <Paginate
+                  listdetails={this.state.prDetails}
+                  updatePageData={(data) => this.setState({ prDetails: data })}
+                  updatePageNo={(index) => this.setState({ pageNo: index })}
+                />
+              )}
           </div>
-          {this.state.viewType !== "mapView" &&
-            this.state.viewType !== "listView" &&
-            this.state.viewType !== "newCustomerView" && (
-              <Paginate
-                listdetails={this.state.prDetails}
-                updatePageData={(data) => this.setState({ prDetails: data })}
-                updatePageNo={(index) => this.setState({ pageNo: index })}
-              />
-            )}
         </div>
       </div>
-      </div>
-      );
-            }
+    );
+  }
 }
