@@ -22,6 +22,7 @@ export default class Body extends Component {
       sampleLogo: logos,
       samplePic: logoss,
       prDetails: [],
+      filterdata:[],
       listdetails: [],
       viewType: "gridView",
       openPage: "openPage",
@@ -43,6 +44,7 @@ export default class Body extends Component {
     console.log("listview", profileDetails);
     console.log("Details", CustomerDetails);
     this.setState({ prDetails: profileDetails });
+    this.setState({ filterdata: profileDetails });
     // this.setState({listdetails:profileDetails});
   }
 
@@ -320,14 +322,18 @@ export default class Body extends Component {
   
   search = (searchKey) => {
     let filterdata;
+    console.log("sss",searchKey)
     if (searchKey!=''){
      filterdata= this.state.prDetails.filter((prDetails) =>
-      prDetails.firstName.toLowerCase().includes(searchKey)
-    
+      prDetails.firstName.toLowerCase().includes(searchKey) ||
+      prDetails.lastName.toLowerCase().includes(searchKey) ||
+      prDetails.gender.toLowerCase().includes(searchKey) ||
+      prDetails.city.toLowerCase().includes(searchKey) ||
+      prDetails.state.name.toLowerCase().includes(searchKey) 
     );
-    return filterdata}
+    this.setState({prDetails:filterdata})}
     else{
-      return this.state.prDetails
+      this.setState({prDetails:this.state.filterdata})
     }
   };
 
