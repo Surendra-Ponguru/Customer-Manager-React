@@ -321,18 +321,6 @@ export default class Body extends Component {
     return sum.toFixed(2);
   };
 
-  // orderTotal() {
-  // this.customers.map((profile.index) => {
-  //     profile{'totalCost'} : 0;
-  //     {(profile?.orders)?
-  //       profile.orders = profile.orders.map((o:index) => {
-  //         profile['totalCost'] += o.itemCost;
-  //       });
-  //     }
-  //     }
-  //   })
-  // }
-
   search = (searchKey) => {
     let filterdata;
     console.log("sss", searchKey);
