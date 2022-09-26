@@ -6,14 +6,16 @@ function Paginate(props) {
   const [data, setData] = useState([]);
   const [pageSelected, updatePageSelected] = useState(0);
   let profileDetails = props.listdetails;
-  const pagesCount = new Array(Math.ceil(profileDetails.length / 10)).fill(0);
+  const viewType=props.view;
+  const pagesCount = new Array(Math.ceil(profileDetails.length /(viewType==="listView"?4:10))).fill(0);
   const setPagination = (indexValue) => {
     updatePageSelected(indexValue);
   };
   useEffect(() => {
     props.updatePageNo(pageSelected);
+    
   }, [pageSelected]);
-
+  console.log(profileDetails.length)
   return (
     <div style={{ marginLeft: "70px" }}>
       {pagesCount.map((_, index) => {

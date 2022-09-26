@@ -1,37 +1,47 @@
 import React, { Component } from "react";
-import logop from '../img/pro.jpg';
+import logop from "../img/pro.jpg";
 import { FaAlignJustify } from "react-icons/fa";
 import { FaTags } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
+import Header from "./Header";
 
+export default class CustomerDetail extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      Customer: "Details",
+    };
+  }
 
-
-export default class CustomerDetail extends Component{
-    constructor(props){
-        super(props);
-        this.state={
-        Customer:"Details"
-        }
-    }
-   
-    CustomerManager(){
-        <div style={{display:"flex"}}>
-        <div>
-        <img src={logop} alt="name"></img>
+  CustomerManager() {
+    return(
+    <div>
+      <div style={{display:"flex"}}>
+        <img className="image2" src={logop} alt="name"></img>
         <h3>Customers Information</h3>
-        </div>
-        <div>  
-           <button><FaAlignJustify/>Customer Details</button>
-           <button><FaTags/>Customer orders</button>
-           <button><FaEdit/>Edit Customer</button>
-        </div>
-        </div>  
-    }
-    render(){
-        return(
-          <>
-            <div>{this.props.CustomerManager()}</div>
-            </>  
-        ); 
-    }
+      </div>
+      <div className="myBtnContainer">
+        <button  className="btn">
+          <FaAlignJustify />
+          Customer Details
+        </button>
+        <button className="btn">
+          <FaTags />
+          Customer orders
+        </button>
+        <button className="btn">
+          <FaEdit />
+          Edit Customer
+        </button>
+      </div>
+    </div>
+    );
+  }
+  render() {
+    return (
+        <div>
+            <div>
+                <Header/></div>{this.CustomerManager()}</div>
+    );
+  }
 }

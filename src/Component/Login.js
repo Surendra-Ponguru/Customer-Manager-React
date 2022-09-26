@@ -2,7 +2,8 @@ import { useState } from "react";
 
 import { useNavigate } from "react-router";
 import Log1 from "../img/screenshots/log1.png";
-import loglogo from '../img/screenshots/loglogo.jpg';
+import loglogo from '../img/i1.png';
+//import  loglogo from "../img/im.jpg";
 import App from "../App";
 
 
@@ -33,9 +34,10 @@ const Login = () => {
     }
   };
   return (
-    <div style={{display:"flex",backgroundColor:"lightgray"}}>
+    <div>
+    <div style={{display:"flex",backgroundColor:"lightblue",height:"600px",flexWrap:"wrap"}}>
        <div className="logDiv">
-        <img src={loglogo} name="name"></img>
+        <img src={loglogo} name="name" style={{height:"350px",width:"250px",marginRight:"200px"}}></img>
       </div>
       <div className="logDiv1">
         <img src={Log1} name="name" className="LogImg"></img>
@@ -75,6 +77,7 @@ const Login = () => {
         </form>
       </div>
      
+    </div>
     </div>
   );
 };

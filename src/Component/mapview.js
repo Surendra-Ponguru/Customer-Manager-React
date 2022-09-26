@@ -24,7 +24,7 @@ function MapView() {
   if (loadError) return "Error Loading maps";
   if (!isLoaded) return "loading maps";
   return (
-    <div className="App" style={{display:"flex"}}>
+    <div className="App" style={{display:"flex",width:"100%"}}>
       <div class="table-wrapper-scroll-y my-custom-scrollbar">
         <table className="table table-striped">
        

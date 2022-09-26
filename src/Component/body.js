@@ -1,18 +1,25 @@
 import React, { Component } from "react";
 import Customer from "./Customer";
+import logo from "../img/pro.jpg";
 import logos from "../img/male.png";
 import logoss from "../img/female.png";
 import logosss from "../img/addC1.png";
 import CustomerList from "./customerlist";
 import profileDetails from "./assets/profileDetails.json";
 import { FaEdit } from "react-icons/fa";
+import { FaMicrosoft } from "react-icons/fa";
+import { FaAlignJustify } from "react-icons/fa";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 import Paginate from "./pagination";
 import MapView from "./mapview";
 import CustomerDetails from "./CustomerDetail";
+import { Link,Navigate } from "react-router-dom";
 import AboutPage from "./About";
 // import CustomerDetail from "./CustomerDetail";
 // import axios from "axios";
 import Login from "./Login";
+import { Pagination } from "react-bootstrap";
 
 export default class Body extends Component {
   constructor(props) {
@@ -32,8 +39,6 @@ export default class Body extends Component {
       setSearchTerm: [],
       posts: [],
       loading: false,
-      currentPage: 1,
-      postsPerPage: 5,
       pageNo: 0,
     };
     this.addCustomer = this.addCustomer.bind(this);
@@ -46,6 +51,56 @@ export default class Body extends Component {
     this.setState({ filterdata: profileDetails });
     // this.setState({listdetails:profileDetails});
   }
+
+  //*********Customer */
+  customerView = () => {
+    return (
+      <div>
+        <div>
+          <img className="image2" src={logo} alt="name"></img>
+          <label className="label1">Customers</label>
+        </div>
+        <div className="myBtnContainer">
+          <button
+            className="btn"
+            onClick={(e) => this.setState({ viewType: "gridView", pageNo: 0 })}
+          >
+            <FaMicrosoft style={{ marginBottom: "5px" }} /> Card View{" "}
+          </button>
+          <button
+            className="btn"
+            onClick={(e) => this.setState({ viewType: "listView", pageNo: 0 })}
+          >
+            <FaAlignJustify style={{ marginBottom: "5px" }} />
+            List View{" "}
+          </button>
+          <button
+            className="btn"
+            onClick={(e) => this.setState({ viewType: "mapView" })}
+          >
+            <FaMapMarkerAlt style={{ marginBottom: "5px" }} />
+            Map View
+          </button>
+          <button
+            className="btn"
+            onClick={(e) => this.setState({ viewType: "newCustomerView" })}
+          >
+            <FaPlus style={{ marginBottom: "5px" }} />
+            New Customer
+          </button>
+          <div className="innerdiv2">
+            <label>Filter:</label>
+            <br></br>
+            <input
+              type="text"
+              placeholder="...Search..."
+              onChange={(event) => this.props.search(event.target.value)}
+            ></input>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   /////******Add Customers *******/
   addCustomer = () => {
@@ -157,7 +212,7 @@ export default class Body extends Component {
             <label style={{ color: "white", marginLeft: "10px" }}>
               {profile.firstName} {profile.lastName}
             </label>
-            <button
+            <Link to="/CustomerDetail"><button
               style={{
                 float: "right",
                 padding: "6px",
@@ -169,7 +224,7 @@ export default class Body extends Component {
               }}
             >
               <FaEdit />
-            </button>
+            </button></Link>
           </div>
           <div className="insideBodyDiv3">
             <div>
@@ -194,7 +249,7 @@ export default class Body extends Component {
               <br></br>
               <label style={{ fontSize: "17px" }}>{profile.state.name}</label>
               <br></br>
-              <button
+              <Link to="/CustomerDetail"><button
                 src="#"
                 style={{
                   border: "none",
@@ -205,7 +260,7 @@ export default class Body extends Component {
                 }}
               >
                 View Details
-              </button>
+              </button></Link>
             </div>
           </div>
         </div>
@@ -213,7 +268,6 @@ export default class Body extends Component {
   };
 
   ////*******List View ********/
-
   listView = () => {
     return (
       <div>
@@ -235,7 +289,7 @@ export default class Body extends Component {
           <tbody>
             {console.log(this.state.prDetails)}
             {this.state.prDetails
-              .slice(this.state.pageNo * 10, (this.state.pageNo + 1) * 4)
+              .slice(this.state.pageNo * 4, (this.state.pageNo + 1) * 4)
               .map((profile, index) => {
                 return (
                   <tr key={index + 1}>
@@ -267,7 +321,7 @@ export default class Body extends Component {
                       )}
                     </td>
                     <td className="list1">
-                      <button
+                    <Link to="/CustomerDetail"> <button
                         style={{
                           border: "none",
                           width: "100px",
@@ -276,7 +330,7 @@ export default class Body extends Component {
                         }}
                       >
                         {profile.firstName}
-                      </button>
+                      </button></Link>
                     </td>
                     <td className="list1">{profile.lastName}</td>
                     <td className="list1" style={{ width: "150px" }}>
@@ -288,7 +342,7 @@ export default class Body extends Component {
                       $ {this.totalOrder(profile.orders)}
                     </td>
                     <td className="list1">
-                      <button
+                     <Link to="/CustomerDetail"><button
                         style={{
                           border: "none",
                           width: "100px",
@@ -298,7 +352,7 @@ export default class Body extends Component {
                         onClick={(e) => this.state.customerData("Details")}
                       >
                         View Orders
-                      </button>
+                      </button></Link>
                     </td>
                   </tr>
                 );
@@ -343,34 +397,21 @@ export default class Body extends Component {
     console.log("state", this.state);
     return (
       <div>
-        <div>
-          <Customer />
-          <div>
-            <CustomerList
-              search={this.search}
-              updateViewType={(type) => this.setState({ viewType: type })}
-            />
-            <div className="bodyDiv">
-              <div className="insideBodyDiv">
-                {console.log("CHeck view Type :", this.state.viewType)}
-                {this.state.viewType === "mapView" && <MapView />}
-                {this.state.viewType === "listView" && this.listView()}
-                {this.state.viewType === "gridView" && this.listCustomerData()}
-                {this.state.viewType === "newCustomerView" &&
-                  this.addCustomer()}
 
-                {/* {this.state.viewType ==="About" &&<AboutPage/>} */}
-              </div>
-            </div>
-            {this.state.viewType !== "mapView" &&
-              this.state.viewType !== "newCustomerView" && (
-                <Paginate
-                  listdetails={this.state.prDetails}
-                  updatePageData={(data) => this.setState({ prDetails: data })}
-                  updatePageNo={(index) => this.setState({ pageNo: index })}
-                />
-              )}
-          </div>
+        <div>
+          {this.customerView()}
+          {this.state.viewType === "gridView" && this.listCustomerData()}
+          {this.state.viewType === "listView" && this.listView()}
+          {this.state.viewType === "mapView" && <MapView />}
+          {this.state.viewType === "newCustomerView" && this.addCustomer()}
+          {(this.state.viewType === "gridView" ||
+            this.state.viewType === "listView") && (
+            <Paginate
+              listdetails={this.state.prDetails}
+              view={this.state.viewType}
+              updatePageNo={(index) => this.setState({ pageNo: index })}
+            />
+          )}
         </div>
       </div>
     );

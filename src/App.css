@@ -138,6 +138,9 @@ header
   height:115px;
   margin:10px;
   border:1px solid black;
+  flex-wrap: wrap;
+  display: inline-block;
+  position: relative;
 }
 .insideBodyDiv2
 {
@@ -258,8 +261,10 @@ tr
   text-align: center;
   height: 280px;
   width:350px;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   margin-top: 100px;
+  background-color:rgb(132, 169, 169);
+  border-radius: 15px 15px 15px 15px;
 }
 .LogImg
 {
@@ -271,16 +276,18 @@ tr
 }
 .logSubmit
 {
-  color: #f1f1f1;
+  color: #292424;
+  font-weight: bold;
   margin-top:30px;
   margin-right: -180px;
   width:200px;
-  background-color:rgb(61, 121, 61);
-  border-radius:5px;
+  background-color:rgb(37, 171, 37);
+  border-radius:10px;
+  border: 1px solid rgb(3, 90, 7);
 }
 .loglabel
 {
-  color:rgb(75, 120, 235) ;
+  color:rgb(4, 56, 153) ;
   font-weight: bold;
   margin-left: 30px;
 }

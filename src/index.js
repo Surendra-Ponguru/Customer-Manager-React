@@ -8,6 +8,9 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes,Route } from 'react-router-dom';
 import AboutPage from './Component/About';
+import Body from './Component/body';
+import Orders from './Component/Orders';
+import CustomerDetail from './Component/CustomerDetail';
 
 
 
@@ -16,12 +19,15 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Routes>
              {/* <Route index element={<App />}/> */}
               <Route path="/" element={<Login/>}/>
              <Route path="/App" element={<App/>}/>
              <Route path="/About" element={<AboutPage/>}/>
+             <Route path="/body" element={<Body/>}/>
+             <Route path="/Orders" element={<Orders/>}/>
+             <Route path="/CustomerDetail" element={<CustomerDetail/>}/>
              {/* <Route path="/" element={<App/>}/> */}
  </Routes>
     </BrowserRouter>
