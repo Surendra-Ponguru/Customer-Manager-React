@@ -17,8 +17,8 @@ export default class CustomerDetail extends Component {
     return(
     <div>
       <div style={{display:"flex"}}>
-        <img className="image2" src={logop} alt="name"></img>
-        <h3>Customers Information</h3>
+        <img className="image2" src={logop} alt="name" style={{marginTop:"8px" }}></img>
+        <h3>  Customers Information</h3>
       </div>
       <div className="myBtnContainer">
         <button  className="btn">

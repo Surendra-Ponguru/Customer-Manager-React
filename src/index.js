@@ -11,6 +11,7 @@ import AboutPage from './Component/About';
 import Body from './Component/body';
 import Orders from './Component/Orders';
 import CustomerDetail from './Component/CustomerDetail';
+import 'bootstrap/dist/css/bootstrap.css';
 
 
 
@@ -22,7 +23,7 @@ root.render(
     <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Routes>
              {/* <Route index element={<App />}/> */}
-              <Route path="/" element={<Login/>}/>
+             <Route path="/" element={<Login/>}/>
              <Route path="/App" element={<App/>}/>
              <Route path="/About" element={<AboutPage/>}/>
              <Route path="/body" element={<Body/>}/>

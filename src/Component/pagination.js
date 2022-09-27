@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Button } from "react-bootstrap/Button";
 
 // import profileDetails from './assets/profileDetails.json';
 
@@ -17,10 +18,11 @@ function Paginate(props) {
   }, [pageSelected]);
   console.log(profileDetails.length)
   return (
-    <div style={{ marginLeft: "70px" }}>
+    <div className="btn-group me-2" style={{ marginLeft: "70px" }}>
       {pagesCount.map((_, index) => {
         return (
           <button
+          className="pageButton"
             key={index}
             onClick={() => setPagination(index)}
             style={{

@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import Customer from "./Customer";
 import logo from "../img/pro.jpg";
 import logos from "../img/male.png";
 import logoss from "../img/female.png";
 import logosss from "../img/addC1.png";
-import CustomerList from "./customerlist";
 import profileDetails from "./assets/profileDetails.json";
 import { FaEdit } from "react-icons/fa";
 import { FaMicrosoft } from "react-icons/fa";
@@ -14,12 +12,7 @@ import { FaPlus } from "react-icons/fa";
 import Paginate from "./pagination";
 import MapView from "./mapview";
 import CustomerDetails from "./CustomerDetail";
-import { Link,Navigate } from "react-router-dom";
-import AboutPage from "./About";
-// import CustomerDetail from "./CustomerDetail";
-// import axios from "axios";
-import Login from "./Login";
-import { Pagination } from "react-bootstrap";
+import { Link} from "react-router-dom";
 
 export default class Body extends Component {
   constructor(props) {
@@ -89,12 +82,13 @@ export default class Body extends Component {
             New Customer
           </button>
           <div className="innerdiv2">
-            <label>Filter:</label>
+            <lebel>Filter:</lebel>
             <br></br>
             <input
+             className="searchInput"
               type="text"
               placeholder="...Search..."
-              onChange={(event) => this.props.search(event.target.value)}
+              onChange={(event) => this.search(event.target.value)}
             ></input>
           </div>
         </div>
@@ -404,7 +398,9 @@ export default class Body extends Component {
           {this.state.viewType === "listView" && this.listView()}
           {this.state.viewType === "mapView" && <MapView />}
           {this.state.viewType === "newCustomerView" && this.addCustomer()}
-          {(this.state.viewType === "gridView" ||
+          
+        </div>
+         {(this.state.viewType === "gridView" ||
             this.state.viewType === "listView") && (
             <Paginate
               listdetails={this.state.prDetails}
@@ -412,7 +408,6 @@ export default class Body extends Component {
               updatePageNo={(index) => this.setState({ pageNo: index })}
             />
           )}
-        </div>
       </div>
     );
   }
