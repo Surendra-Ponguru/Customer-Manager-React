@@ -39,15 +39,12 @@ export default class Orders extends Component {
           </thead>
           <tbody>
             {this.state.prDetails.map((profile, index) => {
-              //console.log(profile);
-            
               <tr key={index + 1}>
                 <td>{profile.id}</td>
                 <td>{profile.state}</td>
                 <td>
                   {profile.firstName} {profile.lastName}
                 </td>
-                
               </tr>;
             })}
           </tbody>
@@ -56,8 +53,6 @@ export default class Orders extends Component {
     );
   };
 
-  //   <td>{profile.Orders.map(o=>
-  //{<div>{o.productName}</div>})}</td>
   render() {
     return (
       <div>
