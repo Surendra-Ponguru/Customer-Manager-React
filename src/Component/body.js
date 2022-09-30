@@ -14,6 +14,7 @@ import CustomerDetails from "./CustomerDetail";
 import { Link } from "react-router-dom";
 import AddCustomer from "../Component/AddCustomer";
 import axios from "axios";
+import Orders from "./Orders";
 
 export default class Body extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ export default class Body extends Component {
     this.state = {
       sampleLogo: logos,
       samplePic: logoss,
-      prDetails: [],
+      data: [],
       filterdata: [],
       listdetails: [],
       viewType: "gridView",
@@ -34,38 +35,47 @@ export default class Body extends Component {
       posts: [],
       loading: false,
       pageNo: 0,
-      res:[],
-      data:[],
-      userData:[]
+      data:[]
+      
     };
    
   }
 
-  getUser = async() => {
-   await axios
-      .get("http://localhost:3005/users")
-      .then((res) =>this.setdata(res.data)); 
-      console.log(this.state.data.length,"rrr");
-  };
-
+  
   componentDidMount() {
     console.log("profileDetails", profileDetails);
     console.log("listview", profileDetails);
     console.log("Details", CustomerDetails);
     console.log(profileDetails.users,"rrr");
-  this.setState({ prDetails:profileDetails.users});
-  // this.setState({userData:(this.setState(this.data))});
- 
+   this.setState({ data:profileDetails.users});
     this.setState({ filterdata: profileDetails });
     // this.setState({listdetails:profileDetails});
   }
+      componentDidMount(){
+        axios .get('http://localhost:3005/users')
+        .then((res)=>{
+          const posts=[];
+          for(let key in res.data)
+          {
+            posts.push({...res.data[key],id:key})
+          }
+          console.log(posts);
+          this.setState({data:posts});
+        }
+        )
+      }
 
-  
+
+  //  getUser = async() => {
+  //   await axios
+  //     .get("http://localhost:3005/users")
+  //     .then((data) =>this.setdata(data.data)); 
+  // };
 
   // getData=()=>{
   //   axios.get('http://localhost:3005/users')
-  //     .then((prDetails)=>{
-  //       this.setdata(prDetails.data)
+  //     .then((data)=>{
+  //       this.setdata(data.data)
   //       console.log(this.data,"rrrr");
   //     })
   //     .catch((err)=> {
@@ -132,9 +142,8 @@ export default class Body extends Component {
 
   ///*********Card View**********
   listCustomerData = () =>{
-      // console.log("bb", this.state.prDetails);
-      console.log(this.state.data.length,"ddd");
-      return this.state.prDetails
+      console.log("bb", this.state.data.length);
+      return this.state.data
         .slice(this.state.pageNo * 10, (this.state.pageNo + 1) * 10)
         .map((profile, index) => (
           <div key={index + 1} className="insideBodyDiv1">
@@ -160,7 +169,7 @@ export default class Body extends Component {
             </div>
             <div className="insideBodyDiv3">
               <div>
-                {profile.gender === "male" ? (
+                {(profile.gender ==="male")||(profile.gender ==="Male") ? (
                   <img
                     className="bodyImg"
                     src={logos}
@@ -229,15 +238,15 @@ export default class Body extends Component {
             </tr>
           </thead>
           <tbody>
-            {console.log(this.state.prDetails)}
-            {this.state.prDetails
+            {console.log(this.state.data,"ddd")}
+            {this.state.data
               .slice(this.state.pageNo * 4, (this.state.pageNo + 1) * 4)
               .map((profile, index) => {
                 return (
                   <tr key={index + 1}>
                     <td className="list1">
                       {" "}
-                      {profile.gender === "male" ? (
+                      {(profile.gender ==="male")||(profile.gender ==="Male")? (
                         <img
                           className="bodyImg"
                           src={logos}
@@ -325,18 +334,18 @@ export default class Body extends Component {
   search = (searchKey) => {
     let filterdata;
     console.log("sss", searchKey);
-    if (searchKey !== "") {
-      filterdata = this.state.prDetails.filter(
-        (prDetails) =>
-          prDetails.firstName.toLowerCase().includes(searchKey) ||
-          prDetails.lastName.toLowerCase().includes(searchKey) ||
-          prDetails.gender.toLowerCase().includes(searchKey) ||
-          prDetails.city.toLowerCase().includes(searchKey) ||
-          prDetails.state.name.toLowerCase().includes(searchKey)
+    if (searchKey != "") {
+      filterdata = this.state.data.filter(
+        (data) =>
+          data.firstName.toLowerCase().includes(searchKey) ||
+          data.lastName.toLowerCase().includes(searchKey) ||
+          data.gender.toLowerCase().includes(searchKey) ||
+          data.city.toLowerCase().includes(searchKey) ||
+          data.state.name.toLowerCase().includes(searchKey)
       );
-      this.setState({ prDetails: filterdata });
+      this.setState({ data: filterdata });
     } else {
-      this.setState({ prDetails: this.state.filterdata });
+      this.setState({ data: this.state.filterdata });
     }
   };
 
@@ -348,13 +357,13 @@ export default class Body extends Component {
           {this.customerView()}
           {this.state.viewType === "gridView" && this.listCustomerData()}
           {this.state.viewType === "listView" && this.listView()}
-          {this.state.viewType === "mapView" && <MapView />}
-          {this.state.viewType === "newCustomerView" && <AddCustomer />}
+          {this.state.viewType === "mapView" && <MapView views={this.state.data}/>}
+          {this.state.viewType === "newCustomerView" && <AddCustomer data={this.state.data} />}
         </div>
         {(this.state.viewType === "gridView" ||
-          this.state.viewType === "listView") && (
+          this.state.viewType === "listView") && <Orders data={this.state.data}/> && (
           <Paginate
-            listdetails={this.state.prDetails}
+            listdetails={this.state.data}
             view={this.state.viewType}
             updatePageNo={(index) => this.setState({ pageNo: index })}
           />

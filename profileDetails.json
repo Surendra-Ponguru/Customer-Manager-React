@@ -446,50 +446,26 @@
     },
     {
       "id": 23,
-      "firstName": "suri",
-      "lastName": "ponguru",
-      "gender": "male",
-      "address": "2-3-456",
-      "city": "kadapa",
+      "firstName": "Ramesh",
+      "lastName": "Boddu",
+      "gender": "Male",
+      "address": "2-3-45,addgutta society",
+      "city": "Nagarjuna Sagar",
       "state": {
-        "abbreviation": "an",
-        "name": "andhra pradesh"
+        "abbreviation": "Te",
+        "name": "Telangana"
       }
     },
     {
       "id": 24,
-      "firstName": "nayab",
-      "lastName": "rasool",
-      "gender": "male",
-      "address": "2-3-4-5",
-      "city": "hyderabad",
-      "state": {
-        "abbreviation": "te",
-        "name": "telangana"
-      }
-    },
-    {
-      "id": 25,
-      "firstName": "subbu",
-      "lastName": "ponguru",
-      "gender": "male",
-      "address": "2-3-45",
-      "city": "kadapa",
-      "state": {
-        "abbreviation": "An",
-        "name": "Andhra Pradesh"
-      }
-    },
-    {
-      "id": 26,
       "firstName": "madhavi",
       "lastName": "galla",
       "gender": "female",
-      "address": "2-3-45",
-      "city": "Bhadrachalam",
+      "address": "2-7-62",
+      "city": "bhadrachalam",
       "state": {
-        "abbreviation": "Te",
-        "name": "Telanagana"
+        "abbreviation": "te",
+        "name": "telangana"
       }
     }
   ]

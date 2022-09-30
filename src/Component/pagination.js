@@ -10,7 +10,6 @@ function Paginate(props) {
   const viewType=props.view;
   console.log(profileDetails,'profileDetails.length');
   const pagesCount = new Array(Math.ceil(profileDetails.length /(viewType==="listView"?4:10))).fill(0);
-  // console.log(pagesCount.length, Array.isArray(pagesCount), 'lllllllllllllll', profileDetails.length, 'profileDetails.length', Math.ceil(profileDetails.length /(viewType==="listView"?4:10)), 'Math.ceil(profileDetails.length /(viewType==="listView"?4:10))');
   const setPagination = (indexValue) => {
     updatePageSelected(indexValue);
   };
@@ -18,7 +17,7 @@ function Paginate(props) {
     props.updatePageNo(pageSelected);
     
   }, [pageSelected]);
-  console.log(profileDetails.length)
+  console.log(profileDetails.length,"sss")
   return (
     <div className="btn-group me-2" style={{ marginLeft: "70px" }}>
       {pagesCount.map((_, index) => {

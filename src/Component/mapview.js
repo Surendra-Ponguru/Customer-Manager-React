@@ -1,4 +1,5 @@
 import React,{useState }from "react";
+import Body from "./body";
 //import profileDetails from "./assets/profileDetails.json";
 import {
   GoogleMap,
@@ -17,18 +18,22 @@ const center = {
   lng: 78.355588967688
 };
 
-function MapView() {
+function MapView(props) {
+  let prDetails=props.views;
+ 
+
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
   const [data,setdata]= useState([{}]);
-
+  console.log("data",data.length);
   const getUser = async() => {
     await axios
       .get("http://localhost:3005/users")
       .then((res) =>setdata(res.data));
       console.log(data.length,"mmm") ;
+      
   };
   if (loadError) return "Error Loading maps";
   if (!isLoaded) return "loading maps";
@@ -43,8 +48,9 @@ function MapView() {
             </tr>
           </thead>
           <tbody>
-            {data.map((index) => (
-              <tr className="maptr">
+            {prDetails.map((index) => (
+          
+            <tr className="maptr">
                 <td style={{display:"flex",border:"none"}}>
                   <>{index.id}.</>
                   <button className="mapedButton">

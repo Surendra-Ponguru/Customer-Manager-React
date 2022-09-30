@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import profileDetails from "./assets/profileDetails.json";
 import Header from "./Header";
+import Body from "./body";
 
 export default class Orders extends Component {
   constructor(props) {
     super(props);
     this.state = {
       prDetails: profileDetails.users,
+      data:props.data
     };
   }
 
@@ -14,6 +16,7 @@ export default class Orders extends Component {
     // console.log("profileDetails", profileDetails);
     // console.log(profileDetails);
     // this.setState({prDetails:profileDetails });
+
   }
 
   //****TotalOrder */
@@ -33,6 +36,7 @@ export default class Orders extends Component {
   OrdersView = () => {
     return (
       <div>
+        
         <table className="table table-striped">
           <thead>
             <tr style={{ borderBottom: "2px solid black" }}>

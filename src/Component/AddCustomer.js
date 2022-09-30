@@ -1,10 +1,23 @@
-
-import React,{useState,useEffect} from "react";
 import axios from "axios";
+import React, { useState,useEffect } from "react";
 
+const AddCustomer = () => {
+    const [resoponse,setresponse]=useState({})
 
-function AddCustomer()  {
-  const [resoponse,setresponse]=useState({})
+    const getData=()=>{
+        axios.get('http://localhost:3005/users')
+          .then((res)=>{
+            setresponse(res.data)
+          })
+          .catch((err)=> {
+            console.log(err);
+          });
+      }
+      useEffect(()=>{
+        getData()
+      },[])
+    
+
   const [formData, setFormData] = useState({
     FirstName: "",
     LastName: "",
@@ -15,20 +28,8 @@ function AddCustomer()  {
     latitude:"",
     longitude:""
   });
-  const getData=()=>{
-    axios.get('http://localhost:3005/users')
-      .then((res)=>{
-        setresponse(res.data)
-      })
-      .catch((err)=> {
-        console.log(err);
-      });
-  }
-  useEffect(()=>{
-    getData()
-  },[])
-
-  async function handleFormSubmit() {
+  
+    async function handleFormSubmit() {
     let obj={
         "id": resoponse.length+1,
     "firstName":formData.FirstName,
@@ -48,7 +49,7 @@ function AddCustomer()  {
         'Content-Type': 'application/json'
     }});
     if (response) {
-      alert(formData.FirstName+" Data added Succcessfully");
+      window.alert(formData.FirstName," Data added Succcessfully");
       window.location.reload()
     } else {
       alert("something went wrong");
@@ -65,8 +66,7 @@ function AddCustomer()  {
     });
   };
   return (
-    <div>
-        <div className="container">
+    <div className="container">
       <div className="row">
         <div className="col-md-7">
         </div>
@@ -165,8 +165,7 @@ function AddCustomer()  {
         </div>
       </div>
     </div>
-    </div>
   );
-}
+};
 
 export default AddCustomer;

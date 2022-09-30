@@ -19,13 +19,14 @@ const EditCustomer= () => {
       .then((res) =>setdata(res.data));
       
   };
-  const handleDelete=async()=>{
-    await axios.delete("http://localhost:3005/users")
-    .then( res => alert(res.data,'deleted succesfully'));
+  const handleDelete=async(id)=>{
+    await axios.delete("http://localhost:3005/users/"+id)
+    .then(res => alert('deleted succesfully'));
+    getUser();
   }
   return (
     <div style={{marginTop:"10px"}}>
-      <table className="table  table-striped-columns"> 
+      <table className="table table-striped"> 
         <thead>
           <tr>
             <th scope="col">id</th>
@@ -55,7 +56,7 @@ const EditCustomer= () => {
                   style={{ display:"flex",justifyContent:"space-between" }}
                 >
                   <button className="btn btn-info">Edit</button>
-                  <button className="btn btn-danger" onClick={handleDelete}>Delete</button>
+                  <button className="btn btn-danger" onClick={()=>handleDelete(user.id)}>Delete</button>
                 </td>
               </tr>);
             })}

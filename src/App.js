@@ -4,6 +4,7 @@ import Body from './Component/body';
 import { Navigate } from 'react-router-dom';
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
+import { useState, Component } from 'react';
 
 
 function App() {
