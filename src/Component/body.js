@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import logo from "../img/pro.jpg";
 import logos from "../img/male.png";
 import logoss from "../img/female.png";
-import logosss from "../img/addC1.png";
 import profileDetails from "./assets/profileDetails.json";
 import { FaEdit } from "react-icons/fa";
 import { FaMicrosoft } from "react-icons/fa";
@@ -90,105 +89,6 @@ export default class Body extends Component {
               placeholder="...Search..."
               onChange={(event) => this.search(event.target.value)}
             ></input>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  /////******Add Customers *******/
-  addCustomer = () => {
-    return (
-      <div>
-        <div className="addCust1">
-          <div className="inAddCust1">
-            <img src={logosss} name="name" className="addimg"></img>
-            <h1
-              style={{
-                marginLeft: "-85px",
-                marginTop: "20px",
-                fontSize: "50px",
-              }}
-            >
-              Customers Manager
-            </h1>
-          </div>
-          <div>
-            <form>
-              <table>
-                <tr>
-                  <td>
-                    <label className="addLabel"> Enter firstName :</label>
-                  </td>
-                  <td>
-                    {" "}
-                    <input type="text" className="addInput"></input>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label className="addLabel"> Enter lasstName :</label>
-                  </td>
-                  <td>
-                    <input type="text" className="addInput"></input>{" "}
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label className="addLabel"> Enter gender :</label>
-                  </td>
-                  <td>
-                    <input type="text" className="addInput"></input>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label className="addLabel"> Enter address :</label>
-                  </td>
-                  <td>
-                    {" "}
-                    <input type="text" className="addInput"></input>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label className="addLabel"> Enter city:</label>
-                  </td>
-                  <td>
-                    {" "}
-                    <input type="text" className="addInput"></input>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    {" "}
-                    <label className="addLabel"> Enter state :</label>
-                  </td>
-                  <td>
-                    {" "}
-                    <input type="text" className="addInput"></input>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label className="addLabel"> state abbrevation:</label>
-                  </td>
-                  <td>
-                    {" "}
-                    <input type="text" className="addInput"></input>
-                  </td>
-                </tr>
-                <div className="inAddCust2">
-                  <input class="btn btn-outline-success" type="Submit"></input>
-                  <input
-                    class="btn btn-outline-danger"
-                    style={{ maginLeft: "30px" }}
-                    type="Reset"
-                    name="Cancel"
-                  ></input>
-                </div>
-              </table>
-            </form>
           </div>
         </div>
       </div>
@@ -391,7 +291,6 @@ export default class Body extends Component {
     console.log("state", this.state);
     return (
       <div>
-
         <div>
           {this.customerView()}
           {this.state.viewType === "gridView" && this.listCustomerData()}
