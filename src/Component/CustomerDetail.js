@@ -77,7 +77,6 @@ export default class CustomerDetail extends Component {
         {this.state.viewDetails==="ordersView" && this.ordersDetail()}
         {this.state.viewDetails==="editView" && <EditCustomer/>}
         
-
       </div>
     );
   }
