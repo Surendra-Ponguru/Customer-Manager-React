@@ -6,7 +6,7 @@ export default class Orders extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      prDetails: profileDetails,
+      prDetails: profileDetails.users,
     };
   }
 

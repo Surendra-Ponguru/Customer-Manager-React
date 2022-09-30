@@ -43,6 +43,7 @@ const Login = () => {
         <img src={Log1} name="name" className="LogImg"></img>
         <form onSubmit={handleSubmit}>
           <table>
+            <tbody>
             <tr>
               <td>
                 <label className="loglabel">Username</label>
@@ -71,8 +72,9 @@ const Login = () => {
               </td>
             </tr>
             <tr>
-              <input type="submit" value="Submit"  className=" logSubmit" />
+              <input type="submit" value="Submit"  className="logSubmit" />
             </tr>
+            </tbody>
           </table>
         </form>
       </div>

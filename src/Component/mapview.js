@@ -1,11 +1,12 @@
-import React from "react";
-import profileDetails from "./assets/profileDetails.json";
+import React,{useState }from "react";
+//import profileDetails from "./assets/profileDetails.json";
 import {
   GoogleMap,
   useLoadScript,
 } from "@react-google-maps/api";
+import axios from "axios";
 
-const profile=profileDetails;
+//const profile=profileDetails.users;
 const libraries = ["places"];
 const mapContainerStyle = {
   width: "70vw",
@@ -21,6 +22,14 @@ function MapView() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
+  const [data,setdata]= useState([{}]);
+
+  const getUser = async() => {
+    await axios
+      .get("http://localhost:3005/users")
+      .then((res) =>setdata(res.data));
+      console.log(data.length,"mmm") ;
+  };
   if (loadError) return "Error Loading maps";
   if (!isLoaded) return "loading maps";
   return (
@@ -34,7 +43,7 @@ function MapView() {
             </tr>
           </thead>
           <tbody>
-            {profile.map((index) => (
+            {data.map((index) => (
               <tr className="maptr">
                 <td style={{display:"flex",border:"none"}}>
                   <>{index.id}.</>

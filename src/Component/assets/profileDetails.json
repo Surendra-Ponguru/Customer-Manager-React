@@ -1,5 +1,5 @@
-[
-    {
+{
+  "users":[   {
           "id": 1,
           "firstName": "Ted",
           "lastName": "James",
@@ -360,3 +360,4 @@
           "longitude": -43.181836
     }
 ]
+}

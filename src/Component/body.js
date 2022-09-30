@@ -11,7 +11,9 @@ import { FaPlus } from "react-icons/fa";
 import Paginate from "./pagination";
 import MapView from "./mapview";
 import CustomerDetails from "./CustomerDetail";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import AddCustomer from "../Component/AddCustomer";
+import axios from "axios";
 
 export default class Body extends Component {
   constructor(props) {
@@ -32,23 +34,56 @@ export default class Body extends Component {
       posts: [],
       loading: false,
       pageNo: 0,
+      res:[],
+      data:[],
+      userData:[]
     };
-    this.addCustomer = this.addCustomer.bind(this);
+   
   }
+
+  getUser = async() => {
+   await axios
+      .get("http://localhost:3005/users")
+      .then((res) =>this.setdata(res.data)); 
+      console.log(this.state.data.length,"rrr");
+  };
+
   componentDidMount() {
     console.log("profileDetails", profileDetails);
     console.log("listview", profileDetails);
     console.log("Details", CustomerDetails);
-    this.setState({ prDetails: profileDetails });
+    console.log(profileDetails.users,"rrr");
+  this.setState({ prDetails:profileDetails.users});
+  // this.setState({userData:(this.setState(this.data))});
+ 
     this.setState({ filterdata: profileDetails });
     // this.setState({listdetails:profileDetails});
   }
+
+  
+
+  // getData=()=>{
+  //   axios.get('http://localhost:3005/users')
+  //     .then((prDetails)=>{
+  //       this.setdata(prDetails.data)
+  //       console.log(this.data,"rrrr");
+  //     })
+  //     .catch((err)=> {
+  //       console.log(err);
+  //     });
+  // }
+  // useEffect=()=>{
+  //   getData();
+  // }
+
+
 
   //*********Customer */
   customerView = () => {
     return (
       <div>
         <div>
+          
           <img className="image2" src={logo} alt="name"></img>
           <label className="label1">Customers</label>
         </div>
@@ -68,23 +103,23 @@ export default class Body extends Component {
           </button>
           <button
             className="btn"
-            onClick={(e) => this.setState({ viewType: "mapView" })}
+            onClick={(e) =>this.setState({ viewType:"mapView"})}
           >
             <FaMapMarkerAlt style={{ marginBottom: "5px" }} />
             Map View
           </button>
           <button
             className="btn"
-            onClick={(e) => this.setState({ viewType: "newCustomerView" })}
+            onClick={(e) =>this.setState({ viewType:"newCustomerView"})}
           >
             <FaPlus style={{ marginBottom: "5px" }} />
             New Customer
           </button>
           <div className="innerdiv2">
-            <lebel>Filter:</lebel>
+            <label>Filter:</label>
             <br></br>
             <input
-             className="searchInput"
+              className="searchInput"
               type="text"
               placeholder="...Search..."
               onChange={(event) => this.search(event.target.value)}
@@ -96,70 +131,83 @@ export default class Body extends Component {
   };
 
   ///*********Card View**********
-  listCustomerData = () => {
-    this.totalOrder();
-    return this.state.prDetails
-      .slice(this.state.pageNo * 10, (this.state.pageNo + 1) * 10)
-      .map((profile, index) => (
-        <div key={index + 1} className="insideBodyDiv1">
-          <div className="insideBodyDiv2">
-            <label style={{ color: "white", marginLeft: "10px" }}>
-              {profile.firstName} {profile.lastName}
-            </label>
-            <Link to="/CustomerDetail"><button
-              style={{
-                float: "right",
-                padding: "6px",
-                background: "transparent",
-                border: "none",
-                color: "white",
-                fontSize: "20px",
-                marginTop: "-10px",
-              }}
-            >
-              <FaEdit />
-            </button></Link>
-          </div>
-          <div className="insideBodyDiv3">
-            <div>
-              {profile.gender === "male" ? (
-                <img
-                  className="bodyImg"
-                  src={logos}
-                  style={{ width: "70px", height: "60px", marginLeft: "10px" }}
-                  alt="name"
-                ></img>
-              ) : (
-                <img
-                  className="bodyImg"
-                  src={logoss}
-                  style={{ width: "70px", height: "60px", marginLeft: "10px" }}
-                  alt="name"
-                ></img>
-              )}
+  listCustomerData = () =>{
+      // console.log("bb", this.state.prDetails);
+      console.log(this.state.data.length,"ddd");
+      return this.state.prDetails
+        .slice(this.state.pageNo * 10, (this.state.pageNo + 1) * 10)
+        .map((profile, index) => (
+          <div key={index + 1} className="insideBodyDiv1">
+            <div className="insideBodyDiv2">
+              <label style={{ color: "white", marginLeft: "10px" }}>
+                {profile.firstName} {profile.lastName}
+              </label>
+              <Link to="/CustomerDetail">
+                <button
+                  style={{
+                    float: "right",
+                    padding: "6px",
+                    background: "transparent",
+                    border: "none",
+                    color: "white",
+                    fontSize: "20px",
+                    marginTop: "-10px",
+                  }}
+                >
+                  <FaEdit />
+                </button>
+              </Link>
             </div>
-            <div className="insideBodyDiv4">
-              <label style={{ fontSize: "17px" }}>{profile.city}</label>
-              <br></br>
-              <label style={{ fontSize: "17px" }}>{profile.state.name}</label>
-              <br></br>
-              <Link to="/CustomerDetail"><button
-                src="#"
-                style={{
-                  border: "none",
-                  background: "transparent",
-                  fontSize: "15px",
-                  color: "rgb(75, 120, 235)",
-                  marginLeft: "-6px",
-                }}
-              >
-                View Details
-              </button></Link>
+            <div className="insideBodyDiv3">
+              <div>
+                {profile.gender === "male" ? (
+                  <img
+                    className="bodyImg"
+                    src={logos}
+                    style={{
+                      width: "70px",
+                      height: "60px",
+                      marginLeft: "10px",
+                    }}
+                    alt="name"
+                  ></img>
+                ) : (
+                  <img
+                    className="bodyImg"
+                    src={logoss}
+                    style={{
+                      width: "70px",
+                      height: "60px",
+                      marginLeft: "10px",
+                    }}
+                    alt="name"
+                  ></img>
+                )}
+              </div>
+              <div className="insideBodyDiv4">
+                <label style={{ fontSize: "17px" }}>{profile.city}</label>
+                <br></br>
+                <label style={{ fontSize: "17px" }}>{profile.state.name}</label>
+                <br></br>
+                <Link to="/CustomerDetail">
+                  <button
+                    src="#"
+                    style={{
+                      border: "none",
+                      background: "transparent",
+                      fontSize: "15px",
+                      color: "rgb(75, 120, 235)",
+                      marginLeft: "-6px",
+                    }}
+                  >
+                    View Details
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      ));
-  };
+        ));
+    }
 
   ////*******List View ********/
   listView = () => {
@@ -215,16 +263,19 @@ export default class Body extends Component {
                       )}
                     </td>
                     <td className="list1">
-                    <Link to="/CustomerDetail"> <button
-                        style={{
-                          border: "none",
-                          width: "100px",
-                          background: "transparent",
-                          color: "rgb(75, 120, 235)",
-                        }}
-                      >
-                        {profile.firstName}
-                      </button></Link>
+                      <Link to="/CustomerDetail">
+                        {" "}
+                        <button
+                          style={{
+                            border: "none",
+                            width: "100px",
+                            background: "transparent",
+                            color: "rgb(75, 120, 235)",
+                          }}
+                        >
+                          {profile.firstName}
+                        </button>
+                      </Link>
                     </td>
                     <td className="list1">{profile.lastName}</td>
                     <td className="list1" style={{ width: "150px" }}>
@@ -236,17 +287,19 @@ export default class Body extends Component {
                       $ {this.totalOrder(profile.orders)}
                     </td>
                     <td className="list1">
-                     <Link to="/CustomerDetail"><button
-                        style={{
-                          border: "none",
-                          width: "100px",
-                          background: "transparent",
-                          color: "rgb(75, 120, 235)",
-                        }}
-                        onClick={(e) => this.state.customerData("Details")}
-                      >
-                        View Orders
-                      </button></Link>
+                      <Link to="/CustomerDetail">
+                        <button
+                          style={{
+                            border: "none",
+                            width: "100px",
+                            background: "transparent",
+                            color: "rgb(75, 120, 235)",
+                          }}
+                          onClick={(e) => this.state.customerData("Details")}
+                        >
+                          View Orders
+                        </button>
+                      </Link>
                     </td>
                   </tr>
                 );
@@ -272,7 +325,7 @@ export default class Body extends Component {
   search = (searchKey) => {
     let filterdata;
     console.log("sss", searchKey);
-    if (searchKey != "") {
+    if (searchKey !== "") {
       filterdata = this.state.prDetails.filter(
         (prDetails) =>
           prDetails.firstName.toLowerCase().includes(searchKey) ||
@@ -296,17 +349,16 @@ export default class Body extends Component {
           {this.state.viewType === "gridView" && this.listCustomerData()}
           {this.state.viewType === "listView" && this.listView()}
           {this.state.viewType === "mapView" && <MapView />}
-          {this.state.viewType === "newCustomerView" && this.addCustomer()}
-          
+          {this.state.viewType === "newCustomerView" && <AddCustomer />}
         </div>
-         {(this.state.viewType === "gridView" ||
-            this.state.viewType === "listView") && (
-            <Paginate
-              listdetails={this.state.prDetails}
-              view={this.state.viewType}
-              updatePageNo={(index) => this.setState({ pageNo: index })}
-            />
-          )}
+        {(this.state.viewType === "gridView" ||
+          this.state.viewType === "listView") && (
+          <Paginate
+            listdetails={this.state.prDetails}
+            view={this.state.viewType}
+            updatePageNo={(index) => this.setState({ pageNo: index })}
+          />
+        )}
       </div>
     );
   }

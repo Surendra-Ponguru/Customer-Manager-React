@@ -16,6 +16,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
@@ -29,6 +30,9 @@ root.render(
              <Route path="/body" element={<Body/>}/>
              <Route path="/Orders" element={<Orders/>}/>
              <Route path="/CustomerDetail" element={<CustomerDetail/>}/>
+             <Route path="/EditCustomer" element={<CustomerDetail/>}/>
+             {/* <Route path="/AddCustomer" element={<AddCustomer/>}/>
+             <Route path="/EditCustomer" element={<EditCustomer/>}/> */}
              {/* <Route path="/" element={<App/>}/> */}
  </Routes>
     </BrowserRouter>

@@ -8,7 +8,9 @@ function Paginate(props) {
   const [pageSelected, updatePageSelected] = useState(0);
   let profileDetails = props.listdetails;
   const viewType=props.view;
+  console.log(profileDetails,'profileDetails.length');
   const pagesCount = new Array(Math.ceil(profileDetails.length /(viewType==="listView"?4:10))).fill(0);
+  // console.log(pagesCount.length, Array.isArray(pagesCount), 'lllllllllllllll', profileDetails.length, 'profileDetails.length', Math.ceil(profileDetails.length /(viewType==="listView"?4:10)), 'Math.ceil(profileDetails.length /(viewType==="listView"?4:10))');
   const setPagination = (indexValue) => {
     updatePageSelected(indexValue);
   };
