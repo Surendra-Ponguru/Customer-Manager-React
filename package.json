@@ -25,7 +25,7 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -b master -d build",
-    "json-server":"json-server --watch profileDetails.json --port 3005",
+    "json-server": "json-server --watch profileDetails.json --port 3005",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

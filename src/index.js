@@ -27,6 +27,7 @@ root.render(
     <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Routes>
              {/* <Route index element={<App />}/> */}
+             
              <Route path="/" element={<Login/>}/>
              <Route path="/App" element={<App/>}/>
              <Route path="/About" element={<AboutPage/>}/>

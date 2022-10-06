@@ -5,6 +5,7 @@ import Log1 from "../img/screenshots/log1.png";
 import loglogo from '../img/screenshots/cust.png';
 //import  loglogo from "../img/im.jpg";
 import App from "../App";
+import Customer from './Customer';
 
 
 const Login = () => {
@@ -15,7 +16,7 @@ const Login = () => {
     localStorage.getItem(localStorage.getItem("authenticated") || false)
   );
   // const users = [{ username: "user1", password: "pass1" }];
-  const usernam = "user";
+  const usernam = "user@gmail.com";
   const passwor = "pass";
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,53 +35,30 @@ const Login = () => {
     }
   };
   return (
-    <div>
-    <div style={{display:"flex",backgroundColor:"#06437b",height:"600px",flexWrap:"wrap"}}>
-       <div className="logDiv">
-        <img src={loglogo} name="name" style={{height:"550px",width:"450px",marginTop:"-120px",marginLeft:"-200px"}}></img>
-      </div>
-      <div className="logDiv1">
-        <img src={Log1} name="name" className="LogImg"></img>
-        <form onSubmit={handleSubmit}>
-          <table>
-            <tbody>
-            <tr>
-              <td>
-                <label className="loglabel">Username</label>
-              </td>
-              <td>
-                <input
-                  type="text"
-                  name="Username"
-                  value={username}
-                  className="loginput"
-                  onChange={(e) => setusername(e.target.value)}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label className="loglabel">Password</label>
-              </td>
-              <td>
-                <input
-                  type="password"
-                  name="Password"
-                  className="loginput"
-                  onChange={(e) => setpassword(e.target.value)}
-                />
-              </td>
-            </tr>
-            <tr>
-              <input type="submit" value="Submit"  className="logSubmit" />
-            </tr>
-            </tbody>
-          </table>
-        </form>
-      </div>
-     
+    <div class="form-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
+                <div class="form-container">
+                    <form class="form-horizontal" onSubmit={handleSubmit}>
+                        <h3 class="title">Customer Manager</h3>
+                        <div class="form-group">
+                            <input class="form-control" type="email" placeholder="Enter your Username"
+                            onChange={(e) => setusername(e.target.value)}></input>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="password" placeholder="Enter your Password" 
+                            onChange={(e) => setpassword(e.target.value)}></input>
+                        </div>
+                        <button class="btn signin">Login</button>
+                        <span class="signup">or <a href="#">Sign up</a></span>
+                        <span class="forgot"><a href="">Forgot Password?</a></span>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    </div>
+</div>
   );
 };
 

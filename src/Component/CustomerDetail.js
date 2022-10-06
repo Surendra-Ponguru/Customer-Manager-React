@@ -122,7 +122,7 @@ totalOrder = (orders) => {
           <table className="table table-striped" style={{width:"800px"}}>
             <tbody>
                 { this.state.data.orders?.map((product,index) =>
-                 <tr key={index+1}> 
+                 <tr key={index+1} style={{border:"2px solid gray"}}> 
                  <td>
                    <label>{product.productName}</label>
                  </td>
@@ -131,7 +131,7 @@ totalOrder = (orders) => {
                  </td>
                  </tr>)
                 }
-                <tr>
+                <tr style={{border:"2px solid black"}}>
                   <td>Total Cost</td>
                   <td>{this.totalOrder(this.state.data.orders)}</td>
                 </tr>
