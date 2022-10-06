@@ -2,21 +2,28 @@ import React, { Component } from "react";
 import profileDetails from "./assets/profileDetails.json";
 import Header from "./Header";
 import Body from "./body";
+import axios from "axios";
 
 export default class Orders extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      prDetails: profileDetails.users,
-      data:props.data
+     data:[]
     };
   }
 
   componentDidMount() {
-    // console.log("profileDetails", profileDetails);
-    // console.log(profileDetails);
-    // this.setState({prDetails:profileDetails });
-
+      axios.get('http://localhost:3005/users')
+      .then((res)=>{
+        const posts=[];
+        for(let key in res.data)
+        {
+          posts.push({...res.data[key],id:key})
+        }
+        console.log(posts);
+        this.setState({data:posts});
+      }
+      )
   }
 
   //****TotalOrder */
@@ -58,7 +65,7 @@ export default class Orders extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.prDetails.map((profile, index) => (
+            {this.state.data.map((profile, index) => (
               <tr key={index + 1}>
                 <td>
                   <h6>{profile.id}</h6>
@@ -86,7 +93,7 @@ export default class Orders extends Component {
                 <h6 style={{ color: "red" }}>
                   Total Amount :{" "}
                   {this.totalOrder(
-                    this.state.prDetails.flatMap((p) => p.orders)
+                    this.state.data.flatMap((p) => p.orders)
                   )}
                 </h6>
               </td>

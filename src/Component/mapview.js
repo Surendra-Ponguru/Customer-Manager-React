@@ -54,7 +54,7 @@ function MapView(props) {
                 <td style={{display:"flex",border:"none"}}>
                   <>{index.id}.</>
                   <button className="mapedButton">
-                    {index.firstName}{index.lastName}
+                    {index.firstName} {index.lastName}
                   </button>
                 </td>
               </tr>

@@ -467,6 +467,17 @@
         "abbreviation": "te",
         "name": "telangana"
       }
+    },
+    {
+      "firstName": "sampath",
+      "lastName": "magavath",
+      "gender": "male",
+      "address": "5-8-0,Aphb colony",
+      "city": "Hyderabad",
+      "state": {
+        "name": "telangana"
+      },
+      "id": 26
     }
   ]
 }

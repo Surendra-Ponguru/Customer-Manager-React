@@ -12,6 +12,9 @@ import Body from './Component/body';
 import Orders from './Component/Orders';
 import CustomerDetail from './Component/CustomerDetail';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/js/dist/modal';
+import EditCustomer from './Component/EditCustomer';
+import CustomerParams from './Component/CustomerDetail';
 
 
 
@@ -29,8 +32,11 @@ root.render(
              <Route path="/About" element={<AboutPage/>}/>
              <Route path="/body" element={<Body/>}/>
              <Route path="/Orders" element={<Orders/>}/>
+             {/* <Route path="/CustomerDetail" element={<CustomerManager/>}/> */}
+             <Route path="/EditCustomer" element={<EditCustomer/>}/>
+             <Route path="/CustomerDetail/:id/*" element={<CustomerParams/>}/>
              <Route path="/CustomerDetail" element={<CustomerDetail/>}/>
-             <Route path="/EditCustomer" element={<CustomerDetail/>}/>
+            
              {/* <Route path="/AddCustomer" element={<AddCustomer/>}/>
              <Route path="/EditCustomer" element={<EditCustomer/>}/> */}
              {/* <Route path="/" element={<App/>}/> */}

@@ -35,41 +35,36 @@ export default class Body extends Component {
       posts: [],
       loading: false,
       pageNo: 0,
-      data:[]
-      
+      data: [],
+      searchKey: "",
     };
-   
   }
 
-  
   componentDidMount() {
     console.log("profileDetails", profileDetails);
     console.log("listview", profileDetails);
     console.log("Details", CustomerDetails);
-    console.log(profileDetails.users,"rrr");
-   this.setState({ data:profileDetails.users});
+    console.log(profileDetails.users, "rrr");
+    this.setState({ data: profileDetails.users });
     this.setState({ filterdata: profileDetails });
     // this.setState({listdetails:profileDetails});
   }
-      componentDidMount(){
-        axios .get('http://localhost:3005/users')
-        .then((res)=>{
-          const posts=[];
-          for(let key in res.data)
-          {
-            posts.push({...res.data[key],id:key})
-          }
-          console.log(posts);
-          this.setState({data:posts});
-        }
-        )
-      }
-
+  componentDidMount() {
+    axios.get("http://localhost:3005/users").then((res) => {
+      // const posts = [];
+      // for (let key in res.data) {
+      //   posts.push({ ...res.data[key], id: key });
+      // }
+      // console.log(posts);
+      console.log(res)
+      this.setState({ data: res.data });
+    });
+  }
 
   //  getUser = async() => {
   //   await axios
   //     .get("http://localhost:3005/users")
-  //     .then((data) =>this.setdata(data.data)); 
+  //     .then((data) =>this.setdata(data.data));
   // };
 
   // getData=()=>{
@@ -86,14 +81,11 @@ export default class Body extends Component {
   //   getData();
   // }
 
-
-
   //*********Customer */
   customerView = () => {
     return (
       <div>
         <div>
-          
           <img className="image2" src={logo} alt="name"></img>
           <label className="label1">Customers</label>
         </div>
@@ -113,14 +105,14 @@ export default class Body extends Component {
           </button>
           <button
             className="btn"
-            onClick={(e) =>this.setState({ viewType:"mapView"})}
+            onClick={(e) => this.setState({ viewType: "mapView" })}
           >
             <FaMapMarkerAlt style={{ marginBottom: "5px" }} />
             Map View
           </button>
           <button
             className="btn"
-            onClick={(e) =>this.setState({ viewType:"newCustomerView"})}
+            onClick={(e) => this.setState({ viewType: "newCustomerView" })}
           >
             <FaPlus style={{ marginBottom: "5px" }} />
             New Customer
@@ -132,7 +124,7 @@ export default class Body extends Component {
               className="searchInput"
               type="text"
               placeholder="...Search..."
-              onChange={(event) => this.search(event.target.value)}
+              onChange={(e) => this.setState({ searchKey: e.target.value })}
             ></input>
           </div>
         </div>
@@ -141,82 +133,90 @@ export default class Body extends Component {
   };
 
   ///*********Card View**********
-  listCustomerData = () =>{
-      console.log("bb", this.state.data.length);
-      return this.state.data
-        .slice(this.state.pageNo * 10, (this.state.pageNo + 1) * 10)
-        .map((profile, index) => (
-          <div key={index + 1} className="insideBodyDiv1">
-            <div className="insideBodyDiv2">
-              <label style={{ color: "white", marginLeft: "10px" }}>
-                {profile.firstName} {profile.lastName}
-              </label>
-              <Link to="/CustomerDetail">
-                <button
+  listCustomerData = () => {
+    console.log("bb", this.state.data.length);
+    return this.state.data
+      .filter(
+        (profile) =>
+          profile.firstName.toLowerCase().includes(this.state.searchKey) ||
+          profile.lastName.toLowerCase().includes(this.state.searchKey) ||
+          profile.gender.toLowerCase().includes(this.state.searchKey) ||
+          profile.city.toLowerCase().includes(this.state.searchKey) ||
+          profile.state.name.toLowerCase().includes(this.state.searchKey)
+      )
+      .slice(this.state.pageNo * 10, (this.state.pageNo + 1) * 10)
+      .map((profile, index) => (
+        <div key={index + 1} className="insideBodyDiv1">
+          <div className="insideBodyDiv2">
+            <label style={{ color: "white", marginLeft: "10px" }}>
+              {profile.firstName} {profile.lastName}
+            </label>
+            <Link to={`/CustomerDetail/${profile.id}/edit`}>
+              <button
+                style={{
+                  float: "right",
+                  padding: "6px",
+                  background: "transparent",
+                  border: "none",
+                  color: "white",
+                  fontSize: "20px",
+                  marginTop: "-10px",
+                }}
+              >
+                <FaEdit />
+              </button>
+            </Link>
+          </div>
+          <div className="insideBodyDiv3">
+            <div>
+              {profile.gender === "male" || profile.gender === "Male" ? (
+                <img
+                  className="bodyImg"
+                  src={logos}
                   style={{
-                    float: "right",
-                    padding: "6px",
-                    background: "transparent",
+                    width: "70px",
+                    height: "60px",
+                    marginLeft: "10px",
+                  }}
+                  alt="name"
+                ></img>
+              ) : (
+                <img
+                  className="bodyImg"
+                  src={logoss}
+                  style={{
+                    width: "70px",
+                    height: "60px",
+                    marginLeft: "10px",
+                  }}
+                  alt="name"
+                ></img>
+              )}
+            </div>
+            <div className="insideBodyDiv4">
+              <label style={{ fontSize: "17px" }}>{profile.city}</label>
+              <br></br>
+              <label style={{ fontSize: "17px" }}>{profile.state.name}</label>
+              <br></br>
+              <Link to={`/CustomerDetail/${profile.id}`}>
+                <button
+                  src="#"
+                  style={{
                     border: "none",
-                    color: "white",
-                    fontSize: "20px",
-                    marginTop: "-10px",
+                    background: "transparent",
+                    fontSize: "15px",
+                    color: "rgb(75, 120, 235)",
+                    marginLeft: "-6px",
                   }}
                 >
-                  <FaEdit />
+                  View Details
                 </button>
               </Link>
             </div>
-            <div className="insideBodyDiv3">
-              <div>
-                {(profile.gender ==="male")||(profile.gender ==="Male") ? (
-                  <img
-                    className="bodyImg"
-                    src={logos}
-                    style={{
-                      width: "70px",
-                      height: "60px",
-                      marginLeft: "10px",
-                    }}
-                    alt="name"
-                  ></img>
-                ) : (
-                  <img
-                    className="bodyImg"
-                    src={logoss}
-                    style={{
-                      width: "70px",
-                      height: "60px",
-                      marginLeft: "10px",
-                    }}
-                    alt="name"
-                  ></img>
-                )}
-              </div>
-              <div className="insideBodyDiv4">
-                <label style={{ fontSize: "17px" }}>{profile.city}</label>
-                <br></br>
-                <label style={{ fontSize: "17px" }}>{profile.state.name}</label>
-                <br></br>
-                <Link to="/CustomerDetail">
-                  <button
-                    src="#"
-                    style={{
-                      border: "none",
-                      background: "transparent",
-                      fontSize: "15px",
-                      color: "rgb(75, 120, 235)",
-                      marginLeft: "-6px",
-                    }}
-                  >
-                    View Details
-                  </button>
-                </Link>
-              </div>
-            </div>
           </div>
-        ));
-    }
+        </div>
+      ));
+  };
 
   ////*******List View ********/
   listView = () => {
@@ -238,15 +238,24 @@ export default class Body extends Component {
             </tr>
           </thead>
           <tbody>
-            {console.log(this.state.data,"ddd")}
+            {console.log(this.state.data, "ddd")}
             {this.state.data
+             .filter(
+              (profile) =>
+                profile.firstName.toLowerCase().includes(this.state.searchKey) ||
+                profile.lastName.toLowerCase().includes(this.state.searchKey) ||
+                profile.gender.toLowerCase().includes(this.state.searchKey) ||
+                profile.city.toLowerCase().includes(this.state.searchKey) ||
+                profile.state.name.toLowerCase().includes(this.state.searchKey)
+            )
               .slice(this.state.pageNo * 4, (this.state.pageNo + 1) * 4)
               .map((profile, index) => {
                 return (
                   <tr key={index + 1}>
                     <td className="list1">
                       {" "}
-                      {(profile.gender ==="male")||(profile.gender ==="Male")? (
+                      {profile.gender === "male" ||
+                      profile.gender === "Male" ? (
                         <img
                           className="bodyImg"
                           src={logos}
@@ -272,7 +281,7 @@ export default class Body extends Component {
                       )}
                     </td>
                     <td className="list1">
-                      <Link to="/CustomerDetail">
+                    <Link to={`/CustomerDetail/${profile.id}`}>
                         {" "}
                         <button
                           style={{
@@ -296,7 +305,7 @@ export default class Body extends Component {
                       $ {this.totalOrder(profile.orders)}
                     </td>
                     <td className="list1">
-                      <Link to="/CustomerDetail">
+                      <Link to={`/CustomerDetail/${profile.id}/Orders`}>
                         <button
                           style={{
                             border: "none",
@@ -345,7 +354,7 @@ export default class Body extends Component {
       );
       this.setState({ data: filterdata });
     } else {
-      this.setState({ data: this.state.filterdata });
+      this.setState({ data: this.state.data });
     }
   };
 
@@ -357,14 +366,19 @@ export default class Body extends Component {
           {this.customerView()}
           {this.state.viewType === "gridView" && this.listCustomerData()}
           {this.state.viewType === "listView" && this.listView()}
-          {this.state.viewType === "mapView" && <MapView views={this.state.data}/>}
-          {this.state.viewType === "newCustomerView" && <AddCustomer data={this.state.data} />}
+          {this.state.viewType === "mapView" && (
+            <MapView views={this.state.data} />
+          )}
+          {this.state.viewType === "newCustomerView" && (
+            <AddCustomer data={this.state.data} />
+          )}
         </div>
         {(this.state.viewType === "gridView" ||
-          this.state.viewType === "listView") && <Orders data={this.state.data}/> && (
+          this.state.viewType === "listView")&& (
           <Paginate
             listdetails={this.state.data}
             view={this.state.viewType}
+            searchKey={this.state.searchKey}
             updatePageNo={(index) => this.setState({ pageNo: index })}
           />
         )}
