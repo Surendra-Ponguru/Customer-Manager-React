@@ -23,7 +23,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "gh-build": "PUBLIC_URL=/Customer-Manager-React/ npm run build",
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d build",
+    "gh-build": "npm run build",
     "gh-pages": "npm run gh-build && git subtree push --prefix build origin gh-pages",
     "json-server": "json-server --watch profileDetails.json --port 3005",
     "start": "react-scripts start",
