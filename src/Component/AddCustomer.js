@@ -49,7 +49,7 @@ const AddCustomer = () => {
         'Content-Type': 'application/json'
     }});
     if (response) {
-      window.alert(formData.FirstName," Data added Succcessfully");
+      window.alert(" Customer added Succcessfully");
       window.location.reload()
     } else {
       alert("something went wrong");

@@ -340,10 +340,18 @@ tr
   font-size: 1.2em;
   transition: all ls;
  } */
+ .form-bg
+ {
+  background-color: #11578c;
+  height:600px;
+ }
  
  .form-container{
   font-family: 'Mukta', sans-serif;
   padding: 0 20px 20px 0;
+  margin-left: 300px;
+  margin-right: -300px;
+  margin-top: 30px;
 }
 .form-container .form-horizontal{
   background: repeating-linear-gradient(45deg,#fff,#fff 10px,#f9f9f9 10px,#f9f9f9 20px);
@@ -351,7 +359,7 @@ tr
   border-radius: 0;
   border: 2px solid rgba(0,0,0,0.1);
   box-shadow: 20px 20px 0 rgba(0,0,0,0.1);
-  position: relative;
+  
 }
 .form-horizontal .title{
   color: #222;
