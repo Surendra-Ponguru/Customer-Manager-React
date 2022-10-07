@@ -31,7 +31,7 @@ const AddCustomer = () => {
   
     async function handleFormSubmit() {
     let obj={
-        "id": resoponse.length+1,
+        
     "firstName":formData.FirstName,
     "lastName":formData.LastName,
     "gender": formData.gender,

@@ -19,7 +19,7 @@ const CustomerParams = () => {
    return <CustomerDetail cid={params["id"]} page={params["*"]}/>
 }
 const mapContainerStyle = {
-  width: "70vw",
+  width: "80vw",
   height: "70vh",
 };
 const center = {
@@ -86,32 +86,33 @@ totalOrder = (orders) => {
   customersDeatils=()=>{
     // console.log("bb", this.state.data.length);
     return (
-
-        <div style={{display:"flex",marginTop:"20px"}}>
+           <div  style={{display:"flex"}}>
+        <div style={{marginTop:"20px"}}>
           <div>
             {(this.state.data.gender === "male")||(this.state.data.gender === "Male")?
             <img src={male}
             style={{
               width: "70px",
               height: "60px",
-              marginLeft: "10px",
+              marginLeft: "50px",
             }}></img>:
             <img src={female}
             style={{
               width: "70px",
               height: "60px",
-              marginLeft: "10px",
+              marginLeft: "50px",
             }}></img>
             }
           </div>
-          <div style={{marginLeft:"30px"}}>
+          <div style={{marginLeft:"40px",marginTop:"10px"}}>
           <h6>{this.state.data.firstName} {this.state.data.lastName}</h6>
           <h6>{this.state.data.address}</h6>
           <h6>{this.state.data.city} ,{this.state.data.state?.name}.</h6>
           </div>
+          </div>
           <div style={{marginLeft:"30px",marginTop:"20px"}}>
         <GoogleMap mapContainerStyle={mapContainerStyle} zoom={10} center={center} />
-      </div>
+         </div>
         </div>
     )
   }
@@ -122,7 +123,7 @@ totalOrder = (orders) => {
           <table className="table table-striped" style={{width:"800px"}}>
             <tbody>
                 { this.state.data.orders?.map((product,index) =>
-                 <tr key={index+1} style={{border:"2px solid gray"}}> 
+                 <tr key={index+1} style={{borderBottom:"2px solid black"}}> 
                  <td>
                    <label>{product.productName}</label>
                  </td>
@@ -131,9 +132,9 @@ totalOrder = (orders) => {
                  </td>
                  </tr>)
                 }
-                <tr style={{border:"2px solid black"}}>
-                  <td>Total Cost</td>
-                  <td>{this.totalOrder(this.state.data.orders)}</td>
+                <tr>
+                  <td style={{color:"red"}}>Total Cost</td>
+                  <td style={{color:"red"}}>{this.totalOrder(this.state.data.orders)}</td>
                 </tr>
             </tbody>
           </table>
