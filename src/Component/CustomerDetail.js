@@ -159,7 +159,7 @@ totalOrder = (orders) => {
             <FaAlignJustify />
             Customer Details
           </button>
-          <button className="btn" onClick={(e) => this.setState({ viewDetails:"ordersView"})}>
+          <button className="btn" onClick={(e) => this.setState({ viewDetails:"Orders"})}>
             <FaTags />
             Customer orders
           </button>
