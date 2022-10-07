@@ -23,7 +23,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "gh-build": "PUBLIC_URL=https://github.com/Surendra-Ponguru/Customer-Manager-React/ npm run build",
+    "gh-build": "PUBLIC_URL=/Customer-Manager-React/ npm run build",
     "gh-pages": "npm run gh-build && git subtree push --prefix build origin gh-pages",
     "json-server": "json-server --watch profileDetails.json --port 3005",
     "start": "react-scripts start",
