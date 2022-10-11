@@ -63,13 +63,6 @@ const center = {
   });
   }
 
-//  sampledata = () => {
-//     const params = new URLSearchParams(window.location.pathname);
-//     return (
-//     <label>{params.get("id")}</label>
-//     )
-//   };
-
 totalOrder = (orders) => {
   if (orders === undefined) {
     return 0;

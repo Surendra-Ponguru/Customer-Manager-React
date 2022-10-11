@@ -29,10 +29,7 @@ export default class AboutPage extends Component {
           </div>
       </div>
         </div>
-   
       </div>
-      
-     
     );
   }
 }
