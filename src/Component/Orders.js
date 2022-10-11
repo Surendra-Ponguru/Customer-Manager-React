@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import profileDetails from "./assets/profileDetails.json";
 import Header from "./Header";
-import Body from "./body";
 import axios from "axios";
 
 export default class Orders extends Component {
@@ -65,10 +63,10 @@ export default class Orders extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.data.map((profile, index) => (
-              <tr key={index + 1}>
+            {this.state.data.map((profile) => (
+              <tr key={profile.id}>
                 <td>
-                  <h6>{profile.id}</h6>
+                  <h6 >{profile.id}</h6>
                 </td>
                 <td>
                   {profile.firstName} {profile.lastName}
@@ -83,7 +81,7 @@ export default class Orders extends Component {
                   <h6>{this.totalOrder(profile.orders)}</h6>
                 </td>
               </tr>
-            ))}
+            ))} 
             <tr>
               <td></td>
               <td></td>

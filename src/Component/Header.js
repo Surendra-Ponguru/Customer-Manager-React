@@ -10,6 +10,10 @@ export default class Header extends Component {
     userPreference:""
   }
 }
+ refreshPage=()=>{
+  window.location.reload(false);
+  return <Navigate to="/App"/>
+ }
 
   customersPage = () => {
     <Navigate to="/body" />;
@@ -45,7 +49,7 @@ export default class Header extends Component {
     return (
       <div className="header1">
         <header>
-          <img className="image1" src={logo} alt="name"></img>
+          <img className="image1" src={logo} alt="name" onClick={this.refreshPage}></img>
           <h3 style={{ color: "white", marginTop: "10px" }}>
             Customer Manager
           </h3>

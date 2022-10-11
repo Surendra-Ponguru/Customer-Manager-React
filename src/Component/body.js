@@ -364,10 +364,13 @@ export default class Body extends Component {
       <div>
         <div>
           {this.customerView()}
+          <div className="cardView">
+          
           {this.state.viewType === "gridView" && this.listCustomerData()}
+          </div>
           {this.state.viewType === "listView" && this.listView()}
           {this.state.viewType === "mapView" && (
-            <MapView views={this.state.data} />
+            <MapView views={this.state.data} style={{marginTop:"10px"}}/>
           )}
           {this.state.viewType === "newCustomerView" && (
             <AddCustomer data={this.state.data} />

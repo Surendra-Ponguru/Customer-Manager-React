@@ -1,22 +1,22 @@
 import axios from "axios";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 const AddCustomer = () => {
-    const [resoponse,setresponse]=useState({})
+  const [resoponse, setresponse] = useState({});
 
-    const getData=()=>{
-        axios.get('http://localhost:3005/users')
-          .then((res)=>{
-            setresponse(res.data)
-          })
-          .catch((err)=> {
-            console.log(err);
-          });
-      }
-      useEffect(()=>{
-        getData()
-      },[])
-    
+  const getData = () => {
+    axios
+      .get("http://localhost:3005/users")
+      .then((res) => {
+        setresponse(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(() => {
+    getData();
+  }, []);
 
   const [formData, setFormData] = useState({
     FirstName: "",
@@ -25,32 +25,33 @@ const AddCustomer = () => {
     address: "",
     city: "",
     state: "",
-    latitude:"",
-    longitude:""
+    latitude: "",
+    longitude: "",
   });
-  
-    async function handleFormSubmit() {
-    let obj={
-        
-    "firstName":formData.FirstName,
-    "lastName":formData.LastName,
-    "gender": formData.gender,
-    "address":formData.address,
-    "city": formData.city,
-    "state": {
-      "abbreviation":formData.state.slice(0,2),
-      "name": formData.state
-    },
-    // "latitude":formData.latitude,
-    // "longitude":formData.longitude
-  }
-    obj=JSON.stringify(obj);
-    let response = await axios.post("http://localhost:3005/users", obj,{headers:{
-        'Content-Type': 'application/json'
-    }});
+
+  async function handleFormSubmit() {
+    let obj = {
+      firstName: formData.FirstName,
+      lastName: formData.LastName,
+      gender: formData.gender,
+      address: formData.address,
+      city: formData.city,
+      state: {
+        abbreviation: formData.state.slice(0, 2),
+        name: formData.state,
+      },
+      // "latitude":formData.latitude,
+      // "longitude":formData.longitude
+    };
+    obj = JSON.stringify(obj);
+    let response = await axios.post("http://localhost:3005/users", obj, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     if (response) {
-      window.alert(" Customer added Succcessfully");
-      window.location.reload()
+      window.alert("Customer added Succcessfully");
+      window.location.reload();
     } else {
       alert("something went wrong");
     }
@@ -61,18 +62,16 @@ const AddCustomer = () => {
       address: "",
       city: "",
       state: "",
-      latitude:"",
-      longitude:""
+      latitude: "",
+      longitude: "",
     });
-  };
+  }
   return (
-    <div className="container">
+    <div className="container" style={{marginTop:"15px"}}>
       <div className="row">
-        <div className="col-md-7">
-        </div>
-        <div className="mb-3">
-          <label htmlFor="exampleFormControlInput1" className="form-label">
-            FirstName
+        <div class="col-md-6">
+          <label htmlFor="exampleFormControlInput1" class="form-label">
+            First Name
           </label>
           <input
             type="text"
@@ -85,9 +84,9 @@ const AddCustomer = () => {
             }
           required/>
         </div>
-        <div className="mb-3">
-          <label htmlFor="exampleFormControlInput1" className="form-label">
-            LastName
+        <div class="col-md-6">
+          <label htmlFor="exampleFormControlInput1" class="form-label">
+            Last Name
           </label>
           <input
             type="text"
@@ -100,9 +99,9 @@ const AddCustomer = () => {
             }
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="exampleFormControlInput1" className="form-label">
-            gender
+        <div class="col-12">
+          <label htmlFor="exampleFormControlInput1" class="form-label">
+            Gender
           </label>
           <input
             type="text"
@@ -115,24 +114,24 @@ const AddCustomer = () => {
             }
           required/>
         </div>
-        <div className="mb-3">
-          <label htmlFor="exampleFormControlInput1" className="form-label">
-            address
+        <div class="col-12">
+          <label htmlFor="exampleFormControlInput1" class="form-label">
+            Address
           </label>
           <input
             type="text"
-            className="form-control"
+            class="form-control"
             id="exampleFormControlInput1"
-            placeholder="address"
+            placeholder="D.No , Area Name "
             value={formData.address}
             onChange={(e) =>
               setFormData({ ...formData, address: e.target.value })
             }
-          required/>
+          ></input>
         </div>
-        <div className="mb-3">
-          <label htmlFor="exampleFormControlInput1" className="form-label">
-            city
+        <div class="col-md-6">
+          <label htmlFor="exampleFormControlInput1" class="form-label">
+            City
           </label>
           <input
             type="text"
@@ -143,9 +142,9 @@ const AddCustomer = () => {
             onChange={(e) => setFormData({ ...formData, city: e.target.value })}
           required/>
         </div>
-        <div className="mb-3">
-          <label htmlFor="exampleFormControlInput1" className="form-label">
-            state
+        <div class="col-md-4">
+          <label htmlFor="exampleFormControlInput1" class="form-label">
+            State
           </label>
           <input
             type="text"
@@ -158,8 +157,8 @@ const AddCustomer = () => {
             }
           />
         </div>
-        <div>
-          <button className="btn btn-success" onClick={handleFormSubmit}>
+        <div class="col-md-4" style={{margin:"20px"}}>
+          <button className="btn btn-success" onClick={handleFormSubmit} style={{width:"200px"}}>
             Add User
           </button>
         </div>

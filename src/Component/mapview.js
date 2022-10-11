@@ -35,13 +35,15 @@ function MapView(props) {
       console.log(data.length,"mmm") ;
       
   };
+
+
+  
   if (loadError) return "Error Loading maps";
   if (!isLoaded) return "loading maps";
   return (
     <div className="App" style={{display:"flex",width:"100%"}}>
-      <div class="table-wrapper-scroll-y my-custom-scrollbar">
+      <div class="table-wrapper-scroll-y my-custom-scrollbar" style={{width:"280px",height:"450px"}}>
         <table className="table table-striped">
-       
           <thead>
             <tr style={{border:"2px solid black"}}>
               <th>Profile List</th>

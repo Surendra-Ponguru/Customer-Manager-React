@@ -20,6 +20,7 @@ import CustomerParams from './Component/CustomerDetail';
 
 
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
@@ -34,7 +35,7 @@ root.render(
              <Route path="/body" element={<Body/>}/>
              <Route path="/Orders" element={<Orders/>}/>
              {/* <Route path="/CustomerDetail" element={<CustomerManager/>}/> */}
-             <Route path="/EditCustomer" element={<EditCustomer/>}/>
+             <Route path="/EditCustomer/:id/*" element={<EditCustomer/>}/>
              <Route path="/CustomerDetail/:id/*" element={<CustomerParams/>}/>
              <Route path="/CustomerDetail" element={<CustomerDetail/>}/>
             

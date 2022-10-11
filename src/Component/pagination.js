@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "react-bootstrap/Button";
 
-// import profileDetails from './assets/profileDetails.json';
 
 function Paginate(props) {
   const [data, setData] = useState([]);

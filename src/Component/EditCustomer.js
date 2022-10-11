@@ -10,6 +10,7 @@ import { CustomerDetail } from "./CustomerDetail";
 //import { isRouteErrorResponse } from "react-router-dom";
 
 
+
 const EditCustomer = () => {
   const [data, setdata] = useState([{}]);
   useEffect(() => {

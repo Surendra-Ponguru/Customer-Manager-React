@@ -14,10 +14,17 @@ import {
   useLoadScript,
 } from "@react-google-maps/api";
 
+
+
+//***** Getting particular params in JSON */
 const CustomerParams = () => {
    const params=useParams();
    return <CustomerDetail cid={params["id"]} page={params["*"]}/>
 }
+
+
+
+//******Map******
 const mapContainerStyle = {
   width: "80vw",
   height: "70vh",
@@ -27,6 +34,8 @@ const center = {
  lng: 78.355588967688
 };
 
+
+//**Customer Details */
  export class CustomerDetail extends Component {
   constructor(props) {
     super(props);
@@ -63,6 +72,7 @@ const center = {
   });
   }
 
+  //** Total Order */
 totalOrder = (orders) => {
   if (orders === undefined) {
     return 0;
@@ -104,7 +114,7 @@ totalOrder = (orders) => {
           </div>
           </div>
           <div style={{marginLeft:"30px",marginTop:"20px"}}>
-        <GoogleMap mapContainerStyle={mapContainerStyle} zoom={10} center={center} />
+          <GoogleMap mapContainerStyle={mapContainerStyle} zoom={10} center={center} ></GoogleMap>
          </div>
         </div>
     )

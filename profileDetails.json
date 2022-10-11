@@ -1,29 +1,22 @@
 {
-  "users": [
-    {
-      "id": 1,
-      "firstName": "Ted",
-      "lastName": "James",
-      "gender": "male",
-      "address": "1234 Anywhere St.",
-      "city": " Phoenix ",
-      "state": {
+  "users": [ {
+    "id": 1,
+    "firstName": "Ted",
+    "lastName": "James",
+    "gender": "male",
+    "address": "1234 Anywhere St.",
+    "city": " Phoenix ",
+    "state": {
         "abbreviation": "AZ",
         "name": "Arizona"
-      },
-      "orders": [
-        {
-          "productName": "Basketball",
-          "itemCost": 7.99
-        },
-        {
-          "productName": "Shoes",
-          "itemCost": 199.99
-        }
-      ],
-      "latitude": 33.299,
-      "longitude": -111.963
     },
+    "orders": [
+        {"productName": "Basketball", "itemCost": 7.99},
+        {"productName": "Shoes", "itemCost": 199.99}
+    ],
+    "latitude": 33.299,
+    "longitude": -111.963
+},
     {
       "id": 2,
       "firstName": "Michelle",
@@ -491,16 +484,27 @@
       "id": 27
     },
     {
-      "firstName": "sai",
-      "lastName": "K",
-      "gender": "Male",
-      "address": "2-454342, JNTU-A",
+      "firstName": "subbu",
+      "lastName": "ponguru",
+      "gender": "male",
+      "address": "2-3-444, Yadgiri Nagar",
       "city": "Hyderabad",
       "state": {
         "abbreviation": "Te",
         "name": "Telangana"
       },
-      "id": 28
+      "id": 30
+    },
+    {
+      "firstName": "nayab",
+      "lastName": "rasool",
+      "gender": "male",
+      "address": "232-22,33, yusufguda",
+      "city": "Hyderabad",
+      "state": {
+        "name": "telanagan"
+      },
+      "id": 31
     }
   ]
 }
