@@ -26,7 +26,7 @@ const CustomerParams = () => {
 
 //******Map******
 const mapContainerStyle = {
-  width: "80vw",
+  width: "75vw",
   height: "70vh",
 };
 const center = {
@@ -113,7 +113,7 @@ totalOrder = (orders) => {
           <h6>{this.state.data.city} ,{this.state.data.state?.name}.</h6>
           </div>
           </div>
-          <div style={{marginLeft:"30px",marginTop:"20px"}}>
+          <div style={{marginLeft:"15px",marginTop:"20px"}}>
           <GoogleMap mapContainerStyle={mapContainerStyle} zoom={10} center={center} ></GoogleMap>
          </div>
         </div>

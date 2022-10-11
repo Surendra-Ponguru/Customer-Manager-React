@@ -67,9 +67,9 @@ const AddCustomer = () => {
     });
   }
   return (
-    <div className="container" style={{marginTop:"15px"}}>
+    <div className="container" style={{ marginTop: "15px" }}>
       <div className="row">
-        <div class="col-md-6">
+        <div class="col-md-6" style={{ marginTop: "10px" }}>
           <label htmlFor="exampleFormControlInput1" class="form-label">
             First Name
           </label>
@@ -77,14 +77,15 @@ const AddCustomer = () => {
             type="text"
             className="form-control"
             id="exampleFormControlInput1"
-            placeholder="first name"
+            placeholder="First name"
             value={formData.FirstName}
             onChange={(e) =>
               setFormData({ ...formData, FirstName: e.target.value })
             }
-          required/>
+            required
+          />
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" style={{ marginTop: "10px" }}>
           <label htmlFor="exampleFormControlInput1" class="form-label">
             Last Name
           </label>
@@ -92,14 +93,14 @@ const AddCustomer = () => {
             type="text"
             className="form-control"
             id="exampleFormControlInput1"
-            placeholder="last Name"
+            placeholder="Last Name"
             value={formData.LastName}
             onChange={(e) =>
               setFormData({ ...formData, LastName: e.target.value })
             }
           />
         </div>
-        <div class="col-12">
+        <div class="col-md-6" style={{ marginTop: "10px" }}>
           <label htmlFor="exampleFormControlInput1" class="form-label">
             Gender
           </label>
@@ -107,14 +108,15 @@ const AddCustomer = () => {
             type="text"
             className="form-control"
             id="exampleFormControlInput1"
-            placeholder="gender"
+            placeholder="Gender"
             value={formData.gender}
             onChange={(e) =>
               setFormData({ ...formData, gender: e.target.value })
             }
-          required/>
+            required
+          />
         </div>
-        <div class="col-12">
+        <div class="col-md-6" style={{ marginTop: "10px" }}>
           <label htmlFor="exampleFormControlInput1" class="form-label">
             Address
           </label>
@@ -129,7 +131,7 @@ const AddCustomer = () => {
             }
           ></input>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" style={{ marginTop: "10px" }}>
           <label htmlFor="exampleFormControlInput1" class="form-label">
             City
           </label>
@@ -137,12 +139,13 @@ const AddCustomer = () => {
             type="text"
             className="form-control"
             id="exampleFormControlInput1"
-            placeholder="city"
+            placeholder="City"
             value={formData.city}
             onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-          required/>
+            required
+          />
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6" style={{ marginTop: "10px" }}>
           <label htmlFor="exampleFormControlInput1" class="form-label">
             State
           </label>
@@ -150,15 +153,19 @@ const AddCustomer = () => {
             type="text"
             className="form-control"
             id="exampleFormControlInput1"
-            placeholder="state"
+            placeholder="State"
             value={formData.state}
             onChange={(e) =>
               setFormData({ ...formData, state: e.target.value })
             }
           />
         </div>
-        <div class="col-md-4" style={{margin:"20px"}}>
-          <button className="btn btn-success" onClick={handleFormSubmit} style={{width:"200px"}}>
+        <div class="col-md-4" style={{ marginLeft:"300px",marginTop:"20px"}}>
+          <button
+            className="btn btn-success"
+            onClick={handleFormSubmit}
+            style={{ width: "500px", backgroundColor: " rgb(75, 120, 235)" }}
+          >
             Add User
           </button>
         </div>

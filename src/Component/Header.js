@@ -11,8 +11,9 @@ export default class Header extends Component {
   }
 }
  refreshPage=()=>{
-  window.location.reload(false);
-  return <Navigate to="/App"/>
+  window.location.reload();
+  // window.location.reload(false);
+  // <Navigate to="/App"/>
  }
 
   customersPage = () => {

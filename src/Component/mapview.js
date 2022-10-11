@@ -1,18 +1,21 @@
 import React,{useState }from "react";
-import Body from "./body";
-//import profileDetails from "./assets/profileDetails.json";
 import {
   GoogleMap,
   useLoadScript,
 } from "@react-google-maps/api";
 import axios from "axios";
 
-//const profile=profileDetails.users;
+
+
 const libraries = ["places"];
+
+
 const mapContainerStyle = {
   width: "70vw",
   height: "70vh",
 };
+
+
 const center = {
    lat: 17.447642286814634,
   lng: 78.355588967688
@@ -26,6 +29,9 @@ function MapView(props) {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
+
+
+
   const [data,setdata]= useState([{}]);
   console.log("data",data.length);
   const getUser = async() => {

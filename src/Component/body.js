@@ -14,7 +14,7 @@ import CustomerDetails from "./CustomerDetail";
 import { Link } from "react-router-dom";
 import AddCustomer from "../Component/AddCustomer";
 import axios from "axios";
-import Orders from "./Orders";
+
 
 export default class Body extends Component {
   constructor(props) {
