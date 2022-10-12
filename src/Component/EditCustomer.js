@@ -2,12 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
-import Header from "./Header";
-import { CustomerDetail } from "./CustomerDetail";
-// import Header from "./Header";
-// import CustomerDetail from "./CustomerDetail";
-
-//import { isRouteErrorResponse } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -26,7 +22,7 @@ const EditCustomer = () => {
   const handleDelete = async (id) => {
     await axios
       .delete("http://localhost:3005/users/" + id)
-      .then((res) => alert("deleted succesfully"));
+      .then((res) => toast("deleted succesfully"));
     getUser();
   };
 
@@ -46,7 +42,7 @@ const EditCustomer = () => {
     console.log(updateData);
     await axios
       .put(`http://localhost:3005/users/${updateData.id}`, updateData)
-      .then((res) => alert("User Updated SuccessFully"));
+      .then((res) => toast("User Updated SuccessFully"));
     getUser();
   };
 
@@ -275,6 +271,8 @@ const EditCustomer = () => {
         </div>
       </div>
     </div>
+
+    <ToastContainer/>
     </div>
   );
 };

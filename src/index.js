@@ -20,7 +20,6 @@ import CustomerParams from './Component/CustomerDetail';
 
 
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 

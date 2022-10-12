@@ -91,7 +91,7 @@ export default class Body extends Component {
         </div>
         <div className="myBtnContainer">
           <button
-            className="btn"
+            className="btn" 
             onClick={(e) => this.setState({ viewType: "gridView", pageNo: 0 })}
           >
             <FaMicrosoft style={{ marginBottom: "5px" }} /> Card View{" "}

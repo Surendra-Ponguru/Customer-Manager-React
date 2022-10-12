@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import Header from "./Header";
 import about from "../img/screenshots/cust.png";
-import { TbMail } from "react-icons/tb";
-import { BsLinkedin } from "react-icons/bs";
-import { BsInstagram } from "react-icons/bs";
-import { FcContacts } from "react-icons/fc";
-import { FaAlignJustify } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaLinkedin} from "react-icons/fa";
+import { TiContacts } from "react-icons/ti";
+
 
 export default class AboutPage extends Component {
   constructor(props) {
@@ -72,20 +70,21 @@ export default class AboutPage extends Component {
               <a
                 type="a"
                 className="btn btn-primary btn-lg btn-floating mx-2"
+                href="https://www.facebook.com/profile.php?id=100065296068420"
                 style={{ backgroundColor: "#54456b" }}
               >
                 <i className="fab fa-facebook-f">
-                  <TbMail style={{ marginTop: "-17px", marginLeft: "-4px" }} />
+                  <FaFacebook style={{ marginTop: "-17px", marginLeft: "-4px" }} />
                 </i>
               </a>
               <a
                 type="a"
                 className="btn btn-primary btn-lg btn-floating mx-2"
-                href="https://kanerika.com/contact-us/"
+                href="https://www.linkedin.com/company/kanerika/"
                 style={{ backgroundColor: "#54456b" }}
               >
                 <i className="fab fa-youtube">
-                  <BsLinkedin
+                  <FaLinkedin
                     style={{ marginTop: "-17px", marginLeft: "-4px" }}
                   />
                 </i>
@@ -93,10 +92,11 @@ export default class AboutPage extends Component {
               <a
                 type="a"
                 className="btn btn-primary btn-lg btn-floating mx-2"
+                href="https://twitter.com/KanerikaSoft"
                 style={{ backgroundColor: "#54456b" }}
               >
                 <i className="fab fa-instagram">
-                  <BsInstagram
+                  <FaTwitter
                     style={{ marginTop: "-17px", marginLeft: "-4px" }}
                   />
                 </i>
@@ -108,8 +108,8 @@ export default class AboutPage extends Component {
                 style={{ backgroundColor: "#54456b" }}
               >
                 <i className="fab fa-twitter">
-                  <FcContacts
-                    style={{ marginTop: "-17px", marginLeft: "-4px" }}
+                  <TiContacts
+                    style={{marginTop: "-17px", marginLeft: "-4px" }}
                   />
                 </i>
               </a>

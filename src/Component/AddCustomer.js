@@ -1,6 +1,9 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const AddCustomer = () => {
   const [resoponse, setresponse] = useState({});
 
@@ -50,8 +53,17 @@ const AddCustomer = () => {
       },
     });
     if (response) {
-      window.alert("Customer added Succcessfully");
-      window.location.reload();
+      toast("Customer added Succcessfully", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      setTimeout(() => window.location.reload(),5000);
     } else {
       alert("something went wrong");
     }
@@ -69,8 +81,8 @@ const AddCustomer = () => {
   return (
     <div className="container" style={{ marginTop: "15px" }}>
       <div className="row">
-        <div class="col-md-6" style={{ marginTop: "10px" }}>
-          <label htmlFor="exampleFormControlInput1" class="form-label">
+        <div className="col-md-6" style={{ marginTop: "10px" }}>
+          <label htmlFor="exampleFormControlInput1" className="form-label">
             First Name
           </label>
           <input
@@ -80,13 +92,13 @@ const AddCustomer = () => {
             placeholder="First name"
             value={formData.FirstName}
             onChange={(e) =>
-              setFormData({ ...formData, FirstName: e.target.value })
+              setFormData({ ...formData, FirstName:e.target.value })
             }
-            required
+            required="true"
           />
         </div>
-        <div class="col-md-6" style={{ marginTop: "10px" }}>
-          <label htmlFor="exampleFormControlInput1" class="form-label">
+        <div className="col-md-6" style={{ marginTop: "10px" }}>
+          <label htmlFor="exampleFormControlInput1" className="form-label">
             Last Name
           </label>
           <input
@@ -100,8 +112,8 @@ const AddCustomer = () => {
             }
           />
         </div>
-        <div class="col-md-6" style={{ marginTop: "10px" }}>
-          <label htmlFor="exampleFormControlInput1" class="form-label">
+        <div className="col-md-6" style={{ marginTop: "10px" }}>
+          <label htmlFor="exampleFormControlInput1" className="form-label">
             Gender
           </label>
           <input
@@ -116,13 +128,13 @@ const AddCustomer = () => {
             required
           />
         </div>
-        <div class="col-md-6" style={{ marginTop: "10px" }}>
-          <label htmlFor="exampleFormControlInput1" class="form-label">
+        <div className="col-md-6" style={{ marginTop: "10px" }}>
+          <label htmlFor="exampleFormControlInput1" className="form-label">
             Address
           </label>
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             id="exampleFormControlInput1"
             placeholder="D.No , Area Name "
             value={formData.address}
@@ -131,8 +143,8 @@ const AddCustomer = () => {
             }
           ></input>
         </div>
-        <div class="col-md-6" style={{ marginTop: "10px" }}>
-          <label htmlFor="exampleFormControlInput1" class="form-label">
+        <div className="col-md-6" style={{ marginTop: "10px" }}>
+          <label htmlFor="exampleFormControlInput1" className="form-label">
             City
           </label>
           <input
@@ -145,8 +157,8 @@ const AddCustomer = () => {
             required
           />
         </div>
-        <div class="col-md-6" style={{ marginTop: "10px" }}>
-          <label htmlFor="exampleFormControlInput1" class="form-label">
+        <div className="col-md-6" style={{ marginTop: "10px" }}>
+          <label htmlFor="exampleFormControlInput1" className="form-label">
             State
           </label>
           <input
@@ -160,7 +172,10 @@ const AddCustomer = () => {
             }
           />
         </div>
-        <div class="col-md-4" style={{ marginLeft:"300px",marginTop:"20px"}}>
+        <div
+          className="col-md-4"
+          style={{ marginLeft: "300px", marginTop: "35px" }}
+        >
           <button
             className="btn btn-success"
             onClick={handleFormSubmit}
@@ -168,6 +183,18 @@ const AddCustomer = () => {
           >
             Add User
           </button>
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
         </div>
       </div>
     </div>

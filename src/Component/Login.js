@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -18,7 +20,7 @@ const Login = () => {
       navigate("../App");
     } else {
       localStorage.setItem("authenticated", false);
-      navigate("../Login");
+      navigate("../");
     }
   };
   return (
@@ -31,20 +33,20 @@ const Login = () => {
                 <h3 className="title">Customer Manager</h3>
 
 
-                <div class="form-floating mb-3">
+                <div className="form-floating mb-3">
                   <input
                     type="email"
-                    class="form-control"
+                    className="form-control"
                     id="floatingInput"
                     placeholder="name@example.com"
                     onChange={(e) => setusername(e.target.value)}
                   />
                   <label for="floatingInput">Email address</label>
                 </div>
-                <div class="form-floating">
+                <div className="form-floating">
                   <input
                     type="password"
-                    class="form-control"
+                    className="form-control"
                     id="floatingPassword"
                     placeholder="Password"
                     onChange={(e) => setpassword(e.target.value)}
@@ -63,6 +65,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 };

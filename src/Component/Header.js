@@ -26,6 +26,7 @@ export default class Header extends Component {
          localStorage.setItem("authenticated", false);
          this.setState({});
           window.alert("Successfully logged off");
+         
         this.userPreference = "Successfully logged off";
             }else{ 
               window.alert(" logged off Cancelled");  
@@ -68,6 +69,7 @@ export default class Header extends Component {
             Logout
           </button>
         </header>
+        
       </div>
     );
   }

@@ -11,7 +11,7 @@ import female from "../img/female.png";
 import { useParams } from "react-router-dom";
 import {
   GoogleMap,
-  useLoadScript,
+  LoadScript,
 } from "@react-google-maps/api";
 
 
@@ -43,6 +43,7 @@ const center = {
       Customer: "Details",
       viewDetails: this.getViewType(this.props.page),
       data:[],
+      mapLoaded: false
     };
    console.log(this.props,"tt")
   }
@@ -114,7 +115,8 @@ totalOrder = (orders) => {
           </div>
           </div>
           <div style={{marginLeft:"15px",marginTop:"20px"}}>
-          <GoogleMap mapContainerStyle={mapContainerStyle} zoom={10} center={center} ></GoogleMap>
+            <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY} libraries={["places"]} onLoad={() => this.setState({mapLoaded: true})}></LoadScript>
+          {this.state.mapLoaded && <GoogleMap mapContainerStyle={mapContainerStyle} zoom={10} center={center} ></GoogleMap>}
          </div>
         </div>
     )

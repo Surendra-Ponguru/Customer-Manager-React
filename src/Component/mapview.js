@@ -48,7 +48,7 @@ function MapView(props) {
   if (!isLoaded) return "loading maps";
   return (
     <div className="App" style={{display:"flex",width:"100%"}}>
-      <div class="table-wrapper-scroll-y my-custom-scrollbar" style={{width:"280px",height:"450px"}}>
+      <div className="table-wrapper-scroll-y my-custom-scrollbar" style={{width:"280px",height:"450px"}}>
         <table className="table table-striped">
           <thead>
             <tr style={{border:"2px solid black"}}>
