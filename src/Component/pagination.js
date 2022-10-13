@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { Button } from "react-bootstrap/Button";
 
 function Paginate(props) {
   const [data, setData] = useState([]);
@@ -30,7 +30,7 @@ function Paginate(props) {
       {pagesCount.map((_, index) => {
         return (
           <button
-            className="pageButton"
+            variant="outline-dark"
             key={index}
             onClick={() => setPagination(index)}
             style={{
@@ -39,7 +39,9 @@ function Paginate(props) {
               margin: "3px",
               border: "1px solid black",
               background: "transparent",
+              borderRadius:"5px 5px 5px 5px"
             }}
+            
           >
             {index}
           </button>

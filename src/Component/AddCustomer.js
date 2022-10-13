@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -33,6 +32,7 @@ const AddCustomer = () => {
   });
 
   async function handleFormSubmit() {
+    
     let obj = {
       firstName: formData.FirstName,
       lastName: formData.LastName,
@@ -43,8 +43,6 @@ const AddCustomer = () => {
         abbreviation: formData.state.slice(0, 2),
         name: formData.state,
       },
-      // "latitude":formData.latitude,
-      // "longitude":formData.longitude
     };
     obj = JSON.stringify(obj);
     let response = await axios.post("http://localhost:3005/users", obj, {
@@ -52,6 +50,7 @@ const AddCustomer = () => {
         "Content-Type": "application/json",
       },
     });
+  
     if (response) {
       toast("Customer added Succcessfully", {
         position: "top-center",
@@ -63,7 +62,7 @@ const AddCustomer = () => {
         progress: undefined,
         theme: "dark",
       });
-      setTimeout(() => window.location.reload(),5000);
+      setTimeout(() => window.location.reload(), 5000);
     } else {
       alert("something went wrong");
     }
@@ -92,9 +91,9 @@ const AddCustomer = () => {
             placeholder="First name"
             value={formData.FirstName}
             onChange={(e) =>
-              setFormData({ ...formData, FirstName:e.target.value })
+              setFormData({ ...formData, FirstName: e.target.value })
             }
-            required="true"
+            required={true}
           />
         </div>
         <div className="col-md-6" style={{ marginTop: "10px" }}>
@@ -179,7 +178,7 @@ const AddCustomer = () => {
           <button
             className="btn btn-success"
             onClick={handleFormSubmit}
-            style={{ width: "500px", backgroundColor: " rgb(75, 120, 235)" }}
+            style={{ width: "100%", backgroundColor: " rgb(75, 120, 235)" }}
           >
             Add User
           </button>

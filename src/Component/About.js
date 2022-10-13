@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import Header from "./Header";
 import about from "../img/screenshots/cust.png";
-import { FaFacebook, FaTwitter, FaLinkedin} from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
 import { TiContacts } from "react-icons/ti";
-
 
 export default class AboutPage extends Component {
   constructor(props) {
@@ -22,8 +21,7 @@ export default class AboutPage extends Component {
               style={{
                 marginLeft: "20px",
                 marginRight: "30px",
-                justifyContent:"inherit"
-              
+                justifyContent: "inherit",
               }}
             >
               <h5>About </h5>
@@ -35,8 +33,8 @@ export default class AboutPage extends Component {
               >
                 Customer Manager is a customer managing platform which helps to
                 efficiently manage all customers and their orders. <br />
-                <br/>
-                <p style={{textAlign:"justify"}}>
+                <br />
+                <p style={{ textAlign: "justify" }}>
                   Customer Data is a precious asset to any business. A team that
                   has clean, accurate data that is correctly formatted will be
                   able to provide an appropriate level of service while saving
@@ -47,7 +45,7 @@ export default class AboutPage extends Component {
                   when a Customer Management System comes into the picture.
                 </p>
                 <h6>How it Matters</h6>
-                <p style={{textAlign:"justify"}}>
+                <p style={{ textAlign: "justify" }}>
                   The customer management experience has increased its value and
                   attention in last few years. As firms identify that their
                   industries have similar competitors in large number. Customer
@@ -61,12 +59,15 @@ export default class AboutPage extends Component {
           </div>
         </div>
 
-        <div style={{ flexWrap:"wrap",width:"1265px"}}>
+        <div style={{ flexWrap: "wrap", width: "100%" }}>
           <footer
             className="text-center"
             style={{ backgroundColor: "rgb(75, 120, 235)" }}
           >
-            <div className="container d-flex justify-content-center py-5" style={{height:"100px",marginTop:"50px"}}>
+            <div
+              className="container d-flex justify-content-center py-5"
+              style={{ height: "100px", marginTop: "50px" }}
+            >
               <a
                 type="a"
                 className="btn btn-primary btn-lg btn-floating mx-2"
@@ -74,7 +75,9 @@ export default class AboutPage extends Component {
                 style={{ backgroundColor: "#54456b" }}
               >
                 <i className="fab fa-facebook-f">
-                  <FaFacebook style={{ marginTop: "-17px", marginLeft: "-4px" }} />
+                  <FaFacebook
+                    style={{ marginTop: "-17px", marginLeft: "-4px" }}
+                  />
                 </i>
               </a>
               <a
@@ -109,7 +112,7 @@ export default class AboutPage extends Component {
               >
                 <i className="fab fa-twitter">
                   <TiContacts
-                    style={{marginTop: "-17px", marginLeft: "-4px" }}
+                    style={{ marginTop: "-17px", marginLeft: "-4px" }}
                   />
                 </i>
               </a>
@@ -118,12 +121,9 @@ export default class AboutPage extends Component {
               className="text-center text-white p-3"
               style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
             >
-             © 2022 Copyright :
-              <a
-                className="text-white"
-                href="https://kanerika.com/"
-              >
-                 kanerika.com
+              © 2022 Copyright :
+              <a className="text-white" href="https://kanerika.com/">
+                kanerika.com
               </a>
             </div>
           </footer>

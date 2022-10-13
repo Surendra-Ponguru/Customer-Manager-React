@@ -6,22 +6,19 @@ export default class Orders extends Component {
   constructor(props) {
     super(props);
     this.state = {
-     data:[]
+      data: [],
     };
   }
 
   componentDidMount() {
-      axios.get('http://localhost:3005/users')
-      .then((res)=>{
-        const posts=[];
-        for(let key in res.data)
-        {
-          posts.push({...res.data[key],id:key})
-        }
-        console.log(posts);
-        this.setState({data:posts});
+    axios.get("http://localhost:3005/users").then((res) => {
+      const posts = [];
+      for (let key in res.data) {
+        posts.push({ ...res.data[key], id: key });
       }
-      )
+      console.log(posts);
+      this.setState({ data: posts });
+    });
   }
 
   //****TotalOrder */
@@ -41,7 +38,6 @@ export default class Orders extends Component {
   OrdersView = () => {
     return (
       <div>
-        
         <table className="table table-striped">
           <thead>
             <tr style={{ borderBottom: "2px solid black" }}>
@@ -66,7 +62,7 @@ export default class Orders extends Component {
             {this.state.data.map((profile) => (
               <tr key={profile.id}>
                 <td>
-                  <h6 >{profile.id}</h6>
+                  <h6>{profile.id}</h6>
                 </td>
                 <td>
                   {profile.firstName} {profile.lastName}
@@ -81,7 +77,7 @@ export default class Orders extends Component {
                   <h6>{this.totalOrder(profile.orders)}</h6>
                 </td>
               </tr>
-            ))} 
+            ))}
             <tr>
               <td></td>
               <td></td>
@@ -90,9 +86,7 @@ export default class Orders extends Component {
               <td style={{ display: "flex" }}>
                 <h6 style={{ color: "red" }}>
                   Total Amount :{" "}
-                  {this.totalOrder(
-                    this.state.data.flatMap((p) => p.orders)
-                  )}
+                  {this.totalOrder(this.state.data.flatMap((p) => p.orders))}
                 </h6>
               </td>
             </tr>

@@ -14,7 +14,7 @@ import CustomerDetails from "./CustomerDetail";
 import { Link } from "react-router-dom";
 import AddCustomer from "../Component/AddCustomer";
 import axios from "axios";
-
+import Header from "./Header";
 
 export default class Body extends Component {
   constructor(props) {
@@ -47,7 +47,7 @@ export default class Body extends Component {
     console.log(profileDetails.users, "rrr");
     this.setState({ data: profileDetails.users });
     this.setState({ filterdata: profileDetails });
-    // this.setState({listdetails:profileDetails});
+    
   }
   componentDidMount() {
     axios.get("http://localhost:3005/users").then((res) => {
@@ -56,30 +56,14 @@ export default class Body extends Component {
       //   posts.push({ ...res.data[key], id: key });
       // }
       // console.log(posts);
-      console.log(res)
+      console.log(res);
       this.setState({ data: res.data });
     });
   }
 
-  //  getUser = async() => {
-  //   await axios
-  //     .get("http://localhost:3005/users")
-  //     .then((data) =>this.setdata(data.data));
-  // };
+  
 
-  // getData=()=>{
-  //   axios.get('http://localhost:3005/users')
-  //     .then((data)=>{
-  //       this.setdata(data.data)
-  //       console.log(this.data,"rrrr");
-  //     })
-  //     .catch((err)=> {
-  //       console.log(err);
-  //     });
-  // }
-  // useEffect=()=>{
-  //   getData();
-  // }
+  
 
   //*********Customer */
   customerView = () => {
@@ -91,31 +75,31 @@ export default class Body extends Component {
         </div>
         <div className="myBtnContainer">
           <button
-            className="btn" 
+            className={this.state. viewType==="gridView"?"btn active":"btn "}
             onClick={(e) => this.setState({ viewType: "gridView", pageNo: 0 })}
           >
             <FaMicrosoft style={{ marginBottom: "5px" }} /> Card View{" "}
           </button>
           <button
-            className="btn"
+            className={this.state. viewType==="listView"?"btn active":"btn "}
             onClick={(e) => this.setState({ viewType: "listView", pageNo: 0 })}
           >
             <FaAlignJustify style={{ marginBottom: "5px" }} />
-            List View{" "}
+             List View{" "}
           </button>
           <button
-            className="btn"
+            className={this.state. viewType==="mapView"?"btn active":"btn "}
             onClick={(e) => this.setState({ viewType: "mapView" })}
           >
             <FaMapMarkerAlt style={{ marginBottom: "5px" }} />
-            Map View
+             Map View
           </button>
           <button
-            className="btn"
+            className={this.state. viewType==="newCustomerView"?"btn active":"btn "}
             onClick={(e) => this.setState({ viewType: "newCustomerView" })}
           >
             <FaPlus style={{ marginBottom: "5px" }} />
-            New Customer
+             New Customer
           </button>
           <div className="innerdiv2">
             <label>Filter:</label>
@@ -240,14 +224,20 @@ export default class Body extends Component {
           <tbody>
             {console.log(this.state.data, "ddd")}
             {this.state.data
-             .filter(
-              (profile) =>
-                profile.firstName.toLowerCase().includes(this.state.searchKey) ||
-                profile.lastName.toLowerCase().includes(this.state.searchKey) ||
-                profile.gender.toLowerCase().includes(this.state.searchKey) ||
-                profile.city.toLowerCase().includes(this.state.searchKey) ||
-                profile.state.name.toLowerCase().includes(this.state.searchKey)
-            )
+              .filter(
+                (profile) =>
+                  profile.firstName
+                    .toLowerCase()
+                    .includes(this.state.searchKey) ||
+                  profile.lastName
+                    .toLowerCase()
+                    .includes(this.state.searchKey) ||
+                  profile.gender.toLowerCase().includes(this.state.searchKey) ||
+                  profile.city.toLowerCase().includes(this.state.searchKey) ||
+                  profile.state.name
+                    .toLowerCase()
+                    .includes(this.state.searchKey)
+              )
               .slice(this.state.pageNo * 4, (this.state.pageNo + 1) * 4)
               .map((profile, index) => {
                 return (
@@ -274,14 +264,14 @@ export default class Body extends Component {
                             width: "90px",
                             height: "75px",
                             marginLeft: "10px",
-                            background: "transparent;",
+                            background: "transparent",
                           }}
                           alt="names"
                         ></img>
                       )}
                     </td>
                     <td className="list1">
-                    <Link to={`/CustomerDetail/${profile.id}`}>
+                      <Link to={`/CustomerDetail/${profile.id}`}>
                         {" "}
                         <button
                           style={{
@@ -363,21 +353,21 @@ export default class Body extends Component {
     return (
       <div>
         <div>
+         
           {this.customerView()}
           <div className="cardView">
-          
-          {this.state.viewType === "gridView" && this.listCustomerData()}
+            {this.state.viewType === "gridView" && this.listCustomerData()}
           </div>
           {this.state.viewType === "listView" && this.listView()}
           {this.state.viewType === "mapView" && (
-            <MapView views={this.state.data} style={{marginTop:"10px"}}/>
+            <MapView views={this.state.data} style={{ marginTop: "10px" }} />
           )}
           {this.state.viewType === "newCustomerView" && (
             <AddCustomer data={this.state.data} />
           )}
         </div>
         {(this.state.viewType === "gridView" ||
-          this.state.viewType === "listView")&& (
+          this.state.viewType === "listView") && (
           <Paginate
             listdetails={this.state.data}
             view={this.state.viewType}

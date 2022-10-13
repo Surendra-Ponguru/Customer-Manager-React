@@ -542,33 +542,9 @@
       "address": "232-22,33, yusufguda",
       "city": "Hyderabad",
       "state": {
-        "name": "telanagan"
+        "name": "telangana"
       },
       "id": 31
-    },
-    {
-      "firstName": "Raj",
-      "lastName": "Dune",
-      "gender": "male",
-      "address": "2-3-456 , yusufguda.",
-      "city": "Hyderabad",
-      "state": {
-        "abbreviation": "",
-        "name": ""
-      },
-      "id": 32
-    },
-    {
-      "firstName": "sita",
-      "lastName": "ponguru",
-      "gender": "female",
-      "address": "6/118 , kanaparthi",
-      "city": "Kadapa",
-      "state": {
-        "abbreviation": "An",
-        "name": "Andhra pradesh"
-      },
-      "id": 33
     }
   ]
 }

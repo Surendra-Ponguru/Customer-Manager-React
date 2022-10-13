@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -31,7 +31,6 @@ const Login = () => {
             <div className="form-container">
               <form className="form-horizontal" onSubmit={handleSubmit}>
                 <h3 className="title">Customer Manager</h3>
-
 
                 <div className="form-floating mb-3">
                   <input
@@ -65,7 +64,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 };
