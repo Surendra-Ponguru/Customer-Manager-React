@@ -34,7 +34,6 @@ const center = {
  lng: 78.355588967688
 };
 
-
 //**Customer Details */
  export class CustomerDetail extends Component {
   constructor(props) {

@@ -11,7 +11,6 @@ const EditCustomer = () => {
   const [data, setdata] = useState([{}]);
   useEffect(() => {
     getUser();
-    // console.log("rr",data);
   }, []);
 
   const getUser = async () => {
