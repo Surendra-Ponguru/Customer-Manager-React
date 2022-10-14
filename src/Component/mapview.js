@@ -41,7 +41,7 @@ function MapView(props) {
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
           data-bs-whatever="@mdo"
-          style={{marginRight:"-30px",float:"left"}}
+          style={{marginRight:"-30px",float:"left", backgroundColor: " rgb(75, 120, 235)"}}
         >
           profile List
         </button>
@@ -82,7 +82,8 @@ function MapView(props) {
                           <button className="mapedButton">
                             {index.firstName} {index.lastName}
                           </button>
-                          <label>{index.address}</label>
+                          <label>{index.city}</label>
+                          
                         </td>
                       </tr>
                     ))}

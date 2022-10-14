@@ -1,13 +1,13 @@
-import React from "react";
+// import React from "react";
 
-export const Login= () => {
-  if (localStorage.getItem("authenticated")) {
-    return true;
-  } else {
-    return false;
-  }
-};
+// export const Login= () => {
+//   if (localStorage.getItem("authenticated")) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// };
 
-export const Logout = () => {
-  localStorage.clear();
-};
+// export const Logout = () => {
+//   localStorage.clear();
+// };

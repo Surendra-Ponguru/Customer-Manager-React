@@ -28,7 +28,6 @@ root.render(
         </Switch> */}
       <Routes>
         {/* <Route index element={<App />}/> */}
-        <Route path='/*' element={ <Navigate to="/App" /> }/>
         <Route path="/" element={<Login />} />
         <Route path="/App" element={<App />} />
         <Route path="/About" element={<AboutPage />} />
@@ -38,6 +37,7 @@ root.render(
         <Route path="/EditCustomer/:id/*" element={<EditCustomer />} />
         <Route path="/CustomerDetail/:id/*" element={<CustomerParams />} />
         <Route path="/CustomerDetail" element={<CustomerDetail />} />
+        <Route path='/*' element={ <Navigate to="/App" /> }/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
