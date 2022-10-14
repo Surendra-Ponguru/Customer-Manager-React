@@ -78,7 +78,7 @@ const AddCustomer = () => {
     });
   }
   return (
-    <div className="container" style={{ marginTop: "15px" }}>
+    <div className="container" style={{ marginTop: "30px",width:"100%" }}>
       <div className="row">
         <div className="col-md-6" style={{ marginTop: "10px" }}>
           <label htmlFor="exampleFormControlInput1" className="form-label">
@@ -173,7 +173,7 @@ const AddCustomer = () => {
         </div>
         <div
           className="col-md-4"
-          style={{ marginLeft: "300px", marginTop: "35px" }}
+          style={{ marginTop: "35px" }}
         >
           <button
             className="btn btn-success"

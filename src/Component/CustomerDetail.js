@@ -137,7 +137,7 @@ export class CustomerDetail extends Component {
   };
   ordersDetail = () => {
     return (
-      <div style={{ marginTop: "20px", marginLeft: "100px" }}>
+      <div style={{ marginTop: "20px", marginLeft: "100px",overflowX:"auto" }}>
         <h4>
           {" "}
           Orders for {this.state.data.firstName} {this.state.data.lastName}

@@ -37,8 +37,8 @@ export default class Orders extends Component {
   //****Orders */
   OrdersView = () => {
     return (
-      <div>
-        <table className="table table-striped">
+      <div style={{overflowX:"auto"}}>
+        <table className="table table-striped" >
           <thead>
             <tr style={{ borderBottom: "2px solid black" }}>
               <th>

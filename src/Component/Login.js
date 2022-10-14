@@ -24,9 +24,9 @@ const Login = () => {
     }
   };
   return (
-    <div className="form-bg">
+    <div className="form-bg" style={{overflowX:"auto"}}>
       <div className="container">
-        <div className="row">
+        <div className="row" style={{overflowX:"auto"}}>
           <div className="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
             <div className="form-container">
               <form className="form-horizontal" onSubmit={handleSubmit}>

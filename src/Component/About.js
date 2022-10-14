@@ -13,7 +13,7 @@ export default class AboutPage extends Component {
     return (
       <div>
         <Header />
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex",overflowX:"auto"}}>
           <img src={about} name="name" className="aboutImg"></img>
 
           <div>

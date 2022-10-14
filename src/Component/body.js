@@ -102,8 +102,8 @@ export default class Body extends Component {
              New Customer
           </button>
           <div className="innerdiv2">
-            <label>Filter:</label>
-            <br></br>
+            <label style={{fontSize:"18px"}}>Filter : </label>
+           
             <input
               className="searchInput"
               type="text"
@@ -205,7 +205,7 @@ export default class Body extends Component {
   ////*******List View ********/
   listView = () => {
     return (
-      <div>
+      <div className="listTable">
         <table className="table table-striped">
           <thead style={{ borderBottom: "2px solid black", fontSize: "17px" }}>
             <tr>

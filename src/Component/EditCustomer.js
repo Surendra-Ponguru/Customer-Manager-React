@@ -54,7 +54,7 @@ const EditCustomer = () => {
 
   return (
     <div>
-      <div style={{ marginTop: "10px" }}>
+      <div style={{ marginTop: "10px" ,overflowX:"auto"}}>
         <div>
           <table className="table table-striped">
             <thead
