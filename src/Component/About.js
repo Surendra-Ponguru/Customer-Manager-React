@@ -66,7 +66,7 @@ export default class AboutPage extends Component {
           >
             <div
               className="container d-flex justify-content-center py-5"
-              style={{ height: "100px", marginTop: "50px" }}
+              style={{ height: "100px", marginTop: "60px" }}
             >
               <a
                 type="a"

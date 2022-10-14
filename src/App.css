@@ -421,8 +421,10 @@ tr {
   }
 }
 .aboutImg {
-  margin-top: -40px;
+  /* margin-top: -20px; */
   width: 360px;
+  height: 50vh;
+  width: 50vw;
 }
 /* .is-active {
   color: rgb(231, 9, 9);
