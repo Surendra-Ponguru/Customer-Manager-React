@@ -40,7 +40,7 @@ const AddCustomer = () => {
       address: formData.address,
       city: formData.city,
       state: {
-        abbreviation: formData.state.slice(0, 2),
+        abbreviation: formData.state.slice(0,2),
         name: formData.state,
       },
     };
@@ -54,7 +54,7 @@ const AddCustomer = () => {
     if (response) {
       toast("Customer added Succcessfully", {
         position: "top-center",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -62,7 +62,7 @@ const AddCustomer = () => {
         progress: undefined,
         theme: "dark",
       });
-      setTimeout(() => window.location.reload(), 5000);
+      // setTimeout(() => window.location.reload(), 3000);
     } else {
       alert("something went wrong");
     }
@@ -91,7 +91,7 @@ const AddCustomer = () => {
             placeholder="First name"
             value={formData.FirstName}
             onChange={(e) =>
-              setFormData({ ...formData, FirstName: e.target.value })
+              setFormData({ ...formData, FirstName:e.target.value })
             }
             required={true}
           />

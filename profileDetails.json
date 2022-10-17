@@ -1,30 +1,6 @@
 {
   "users": [
     {
-      "id": 1,
-      "firstName": "Ted",
-      "lastName": "James",
-      "gender": "male",
-      "address": "1234 Anywhere St.",
-      "city": " Phoenix ",
-      "state": {
-        "abbreviation": "AZ",
-        "name": "Arizona"
-      },
-      "orders": [
-        {
-          "productName": "Basketball",
-          "itemCost": 7.99
-        },
-        {
-          "productName": "Shoes",
-          "itemCost": 199.99
-        }
-      ],
-      "latitude": 33.299,
-      "longitude": -111.963
-    },
-    {
       "id": 2,
       "firstName": "Michelle",
       "lastName": "Thompson",
@@ -557,6 +533,42 @@
         "name": "Telangana"
       },
       "id": 32
+    },
+    {
+      "firstName": "rithu",
+      "lastName": "ponguru",
+      "gender": "male",
+      "address": "21-34.yusufguda",
+      "city": "Hyderabad",
+      "state": {
+        "abbreviation": "te",
+        "name": "telanagana"
+      },
+      "id": 33
+    },
+    {
+      "firstName": "Ram",
+      "lastName": "dass",
+      "gender": "Male",
+      "address": "23-344, Kadapa",
+      "city": "Kadapa",
+      "state": {
+        "abbreviation": "An",
+        "name": "Andhra Pradesh"
+      },
+      "id": 34
+    },
+    {
+      "firstName": "muzib ",
+      "lastName": "syed",
+      "gender": "male",
+      "address": "23-455 , Kadapa",
+      "city": "kadodvedv",
+      "state": {
+        "abbreviation": "fv",
+        "name": "fvfvdvfvf"
+      },
+      "id": 35
     }
   ]
 }

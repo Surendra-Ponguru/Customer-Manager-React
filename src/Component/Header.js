@@ -24,7 +24,7 @@ export default class Header extends Component {
       this.userPreference = "Successfully logged off";
     } else {
       window.alert(" logged off Cancelled");
-      <Navigate to="/App" />;
+      // <Navigate to="/App" />;
     }
     console.log("Logout");
   };

@@ -124,6 +124,7 @@ table {
   width: 200px;
   border: none;
   background: transparent;
+  color: rgb(75, 120, 235);
 }
 .maptr {
   border: 1px solid black;

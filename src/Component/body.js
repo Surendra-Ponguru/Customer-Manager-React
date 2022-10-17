@@ -14,7 +14,7 @@ import CustomerDetails from "./CustomerDetail";
 import { Link } from "react-router-dom";
 import AddCustomer from "../Component/AddCustomer";
 import axios from "axios";
-import Header from "./Header";
+
 
 export default class Body extends Component {
   constructor(props) {
@@ -123,9 +123,13 @@ export default class Body extends Component {
       .filter(
         (profile) =>
           profile.firstName.toLowerCase().includes(this.state.searchKey) ||
+          profile.firstName.toUpperCase().includes(this.state.searchKey) ||
           profile.lastName.toLowerCase().includes(this.state.searchKey) ||
+          profile.lastName.toUpperCase().includes(this.state.searchKey) ||
           profile.gender.toLowerCase().includes(this.state.searchKey) ||
+          profile.gender.toUpperCase().includes(this.state.searchKey) ||
           profile.city.toLowerCase().includes(this.state.searchKey) ||
+          profile.city.toUpperCase().includes(this.state.searchKey) ||
           profile.state.name.toLowerCase().includes(this.state.searchKey)
       )
       .slice(this.state.pageNo * 10, (this.state.pageNo + 1) * 10)
@@ -236,6 +240,17 @@ export default class Body extends Component {
                   profile.city.toLowerCase().includes(this.state.searchKey) ||
                   profile.state.name
                     .toLowerCase()
+                    .includes(this.state.searchKey)||
+                     profile.firstName
+                    .toLowerCase()
+                    .includes(this.state.searchKey) ||
+                  profile.lastName
+                    .toLowerCase()
+                    .includes(this.state.searchKey) ||
+                  profile.gender.toLowerCase().includes(this.state.searchKey) ||
+                  profile.city.toLowerCase().includes(this.state.searchKey) ||
+                  profile.state.name
+                    .toLowerCase()
                     .includes(this.state.searchKey)
               )
               .slice(this.state.pageNo * 4, (this.state.pageNo + 1) * 4)
@@ -330,23 +345,23 @@ export default class Body extends Component {
     return sum.toFixed(2);
   };
 
-  search = (searchKey) => {
-    let filterdata;
-    console.log("sss", searchKey);
-    if (searchKey != "") {
-      filterdata = this.state.data.filter(
-        (data) =>
-          data.firstName.toLowerCase().includes(searchKey) ||
-          data.lastName.toLowerCase().includes(searchKey) ||
-          data.gender.toLowerCase().includes(searchKey) ||
-          data.city.toLowerCase().includes(searchKey) ||
-          data.state.name.toLowerCase().includes(searchKey)
-      );
-      this.setState({ data: filterdata });
-    } else {
-      this.setState({ data: this.state.data });
-    }
-  };
+  // search = (searchKey) => {
+  //   let filterdata;
+  //   console.log("sss", searchKey);
+  //   if (searchKey != "") {
+  //     filterdata = this.state.data.filter(
+  //       (data) =>
+  //         data.firstName.toLowerCase().includes(searchKey) ||
+  //         data.lastName.toLowerCase().includes(searchKey) ||
+  //         data.gender.toLowerCase().includes(searchKey) ||
+  //         data.city.toLowerCase().includes(searchKey) ||
+  //         data.state.name.toLowerCase().includes(searchKey)
+  //     );
+  //     this.setState({ data: filterdata });
+  //   } else {
+  //     this.setState({ data: this.state.data });
+  //   }
+  // };
 
   render() {
     console.log("state", this.state);
